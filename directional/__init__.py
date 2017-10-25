@@ -23,3 +23,4 @@ from __future__ import print_function
 
 from directional.python.ops.conv import conv_spherical
 from directional.python.ops.conv import conv_spherical_cubed_sphere
+from directional.python.ops.conv import avg_pool_spherical_cubed_sphere

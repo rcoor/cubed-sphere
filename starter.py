@@ -1,7 +1,5 @@
 
 from batch_factory.deepfold_batch_factory import BatchFactory
-''' print(conv_spherical_cubed_sphere)
-conv_spherical_cubed_sphere() '''
 
 import argparse
 import sys
@@ -15,14 +13,14 @@ import datetime
 from functools import reduce
 import operator
 
-from directional import conv_spherical_cubed_sphere
+from directional import conv_spherical_cubed_sphere, avg_pool_spherical_cubed_sphere
 from batch_factory.deepfold_batch_factory import BatchFactory
 import tensorflow as tf
 
 FLAGS = None
 
 
-def deepnn():
+def deepnn(n_classes=21):
     """deepnn builds the graph for a deep net for classifying digits.
     Args:
       x: an input tensor with the dimensions (N_examples, 784), where 784 is the
@@ -49,7 +47,7 @@ def deepnn():
 
     # Pooling layer - downsamples by 2X.
     with tf.name_scope('pool1'):
-        h_pool1 = max_pool_2x2(h_conv1,  [1,1,3,3,1])
+        h_pool1 = max_pool_2x2(h_conv1,  [1,1,3,3,1], [1,1,2,2,1])
     print(h_pool1)
     # Second convolutional layer -- maps 32 feature maps to 64.
     with tf.name_scope('conv2'):
@@ -59,7 +57,7 @@ def deepnn():
 
     # Second pooling layer.
     with tf.name_scope('pool2'):
-        h_pool2 = max_pool_2x2(h_conv2, [1,3,3,3,1])
+        h_pool2 = max_pool_2x2(h_conv2, [1,3,3,3,1],  [1,2,2,2,1])
 
     # Second convolutional layer -- maps 32 feature maps to 64.
     with tf.name_scope('conv3'):
@@ -69,7 +67,7 @@ def deepnn():
 
     # Second pooling layer.
     with tf.name_scope('pool3'):
-        h_pool3 = max_pool_2x2(h_conv3, [1,1,3,3,1])
+        h_pool3 = max_pool_2x2(h_conv3, [1,1,3,3,1],  [1,1,2,2,1])
 
     # Second convolutional layer -- maps 32 feature maps to 64.
     with tf.name_scope('conv4'):
@@ -79,7 +77,7 @@ def deepnn():
 
     # Second pooling layer.
     with tf.name_scope('pool4'):
-        h_pool4 = max_pool_2x2(h_conv4)
+        h_pool4 = max_pool_2x2(h_conv4,  [1,1,3,3,1],  [1,1,2,2,1])
 
         print(h_pool4.get_shape)
 
@@ -87,7 +85,8 @@ def deepnn():
     # is down to 7x7x64 feature maps -- maps this to 1024 features.
     with tf.name_scope('fc1'):
         # get shape of the last pool and reduce by product
-        h_pool4_shape = h_pool4.shape.as_list()[1:-1]
+        h_pool4_shape = h_pool4.shape.as_list()[1:]
+        print(h_pool4_shape)
         dim_prod = reduce(operator.mul, h_pool4_shape, 1)
 
         W_fc1 = weight_variable([dim_prod, 2048])
@@ -95,6 +94,7 @@ def deepnn():
 
         h_pool4_flat = tf.reshape(h_pool4, [-1, dim_prod])
         h_fc1 = tf.nn.relu(tf.matmul(h_pool4_flat, W_fc1) + b_fc1)
+
 
     # Dropout - controls the complexity of the model, prevents co-adaptation of
     # features.
@@ -104,11 +104,20 @@ def deepnn():
 
     # Map the 1024 features to 10 classes, one for each digit
     with tf.name_scope('fc2'):
-        W_fc2 = weight_variable([2048, 21])
-        b_fc2 = bias_variable([21])
+        W_fc2 = weight_variable([2048, 2048])
+        b_fc2 = bias_variable([2048])
 
-        y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
-    return y_conv, keep_prob
+        h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)
+
+    # Map the 1024 features to 10 classes, one for each digit
+    with tf.name_scope('fc3'):
+        W_fc3 = weight_variable([2048, n_classes])
+        b_fc3 = bias_variable([n_classes])
+
+        h_fc3 = tf.matmul(h_fc2, W_fc3) + b_fc3
+        print(h_fc3.get_shape)
+
+    return h_fc3
 
 
 def conv3d(x, W):
@@ -116,15 +125,21 @@ def conv3d(x, W):
     return conv_spherical_cubed_sphere(x, W, strides=[1, 1, 1, 1, 1], padding='SAME')
 
 
-def max_pool_2x2(x, filter_size=[1,3,3,3,1]):
+def max_pool_2x2(x, filter_size=[1,1,3,3,1], strides=[1,1,2,2,1]):
     """max_pool_2x2 ford 3d convolutions downsamples a feature map by 2X."""
-    pools = []
+    ''' pools = []
     for patch in range(x.get_shape().as_list()[1]):
         print(x[:, patch, :, :, :, :].get_shape)
         pools.append(
             tf.nn.avg_pool3d(x[:, patch, :, :, :, :], ksize=filter_size, strides=filter_size, padding='SAME')
         )
-    return tf.stack(pools, axis=1)
+        tf.stack(pools, axis=1)
+        '''
+    pool = avg_pool_spherical_cubed_sphere(x,
+                                         ksize=filter_size,
+                                         strides=strides,
+                                         padding='VALID')
+    return pool
 
 
 def weight_variable(shape):

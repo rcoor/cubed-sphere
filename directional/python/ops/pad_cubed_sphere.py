@@ -41,10 +41,8 @@ def pad_cubed_sphere_grid(tensor, r_padding=(0, 0), xi_padding=(0, 0), eta_paddi
     tensor = tf.pad(tensor, [(0, 0), (0, 0), r_padding,
                              (0, 0), (0, 0), (0, 0)], "CONSTANT")
 
-    print(xi_padding, eta_padding)
     # Transpose xi and eta axis
     tensorT = tf.transpose(tensor, [0, 1, 2, 4, 3, 5])
-    print("pad_cubed_sphere!!!!", tensor)
     # Pad xi left (0) and right (1)
     wrap_chunk0 = tf.stack([tensor[:, 3, :, -xi_padding[0]:, :, :],  # Patch 0
                             tensor[:, 0, :, -xi_padding[0]:, :, :],  # Patch 1
