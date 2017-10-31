@@ -42,9 +42,9 @@ def pad_cubed_sphere_grid(tensor, r_padding=(0, 0), xi_padding=(0, 0), eta_paddi
                              (0, 0), (0, 0), (0, 0)], "CONSTANT")
 
     # Transpose xi and eta axis
-    tensorT = tf.transpose(tensor, [0, 1, 2, 4, 3, 5])
+    tensorT = tf.transpose(tensor, [0, 1, 2, 4, 3, 5]) # why this order?
     # Pad xi left (0) and right (1)
-    wrap_chunk0 = tf.stack([tensor[:, 3, :, -xi_padding[0]:, :, :],  # Patch 0
+    wrap_chunk0 = tf.stack([tensor[:, 3, :, -xi_padding[0]:, :, :],  # Patch 0 # how do you know which order the patch is?
                             tensor[:, 0, :, -xi_padding[0]:, :, :],  # Patch 1
                             tensor[:, 1, :, -xi_padding[0]:, :, :],  # Patch 2
                             tensor[:, 2, :, -xi_padding[0]:, :, :],  # Patch 3
