@@ -9,6 +9,7 @@ import glob
 import os
 import time
 import datetime
+import math
 
 import numpy as np
 import pandas as pd
@@ -22,7 +23,7 @@ import tensorflow as tf
 
 FLAGS = None
 
-class Deep_cnn(object):
+class CNNModel(object):
     """deepnn builds the graph for a deep net for classifying residues.
 
     Args:
@@ -36,19 +37,30 @@ class Deep_cnn(object):
     digits 0-20). keep_prob is a scalar placeholder for the probability of
     dropout.
     """
-    def __init__(self, n_classes=21, shape=[None, 6, 24, 38, 38, 2]):
-        self = self
-        self.n_classes = n_classes
+    def __init__(self):
+        # internal setting
+        self.optimizer = tf.train.AdamOptimizer(0.001, beta1=0.9, beta2=0.999, epsilon=1e-08)
         self.shape = [None, 6,24,38,38,2]
-        self.y_ = tf.placeholder(tf.float32, shape=[None, n_classes])
+        self.n_classes = 21
+
+        # placeholders
+        self.labels = tf.placeholder(tf.float32, shape=[None, self.n_classes])
         self.x = tf.placeholder(tf.float32, shape=[None, 6,24,38,38,2])
         self.keep_prob = tf.placeholder(tf.float32)
 
+        # config
+        self.batch_size = 10
+        self.max_steps = 60000
+
     def build_graph(self):
+        bias_initializer = tf.constant_initializer(0.0)
+
         def conv_layer(input, channels_in, channels_out, name="conv"):
             with tf.name_scope(name):
-                W = tf.Variable(tf.random_normal([3,3,3, channels_in, channels_out]), name="W")
-                b = tf.Variable(tf.random_normal([channels_out]), name="b")
+
+                W = tf.get_variable("W/{}".format(name), shape=[3,3,3, channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
+                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
+
                 conv = conv_spherical_cubed_sphere(input, W, strides=[1, 1, 1, 1, 1], padding="SAME")
                 act = tf.nn.relu(conv + b)
                 tf.summary.histogram("weights", W)
@@ -61,14 +73,14 @@ class Deep_cnn(object):
 
         def fc_layer(input, channels_in, channels_out, name="fc"):
             with tf.name_scope(name):
-                W = tf.Variable(tf.random_normal([channels_in, channels_out]), name="W")
-                b = tf.Variable(tf.random_normal([channels_out]), name="b")
+                W = tf.get_variable("W/{}".format(name), shape=[channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
+                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
                 return tf.nn.relu(tf.matmul(input, W) + b)
 
         def out(input, channels_in, channels_out, name="out"):
             with tf.name_scope(name):
-                W = tf.Variable(tf.random_normal([channels_in, channels_out]), name="W")
-                b = tf.Variable(tf.random_normal([channels_out]), name="b")
+                W = tf.get_variable("W/{}".format(name), shape=[channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
+                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
                 return tf.matmul(input, W) + b
 
         # Reshape to use within a convolutional neural net.
@@ -80,33 +92,93 @@ class Deep_cnn(object):
 
         flattened = tf.reshape(conv4,  [-1, reduce_dim(conv4)])
 
-        fc1 = fc_layer(flattened, reduce_dim(conv4), 2048)
+        fc1 = fc_layer(flattened, reduce_dim(conv4), 2048, name="fc1")
         drop_out = tf.nn.dropout(fc1, self.keep_prob)
-        fc2 = fc_layer(drop_out, 2048, 2048)
+        fc2 = fc_layer(drop_out, 2048, 2048, name="fc2")
         return out(fc2, 2048, self.n_classes)
 
-    def train_graph(self, train_batch_factory, validation_batch_factory, test_batch_factory):
-        y_conv = self.build_graph()
+    def batch_factory(self):
+        # get proteins feature file names and grid feature file names
+        protein_feature_filenames = sorted(
+            glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
+        grid_feature_filenames = sorted(
+            glob.glob(os.path.join(FLAGS.input_dir, "*residue_features.npz")))
+
+        # Set range for validation and test set
+        validation_end = test_start = int(
+            len(protein_feature_filenames) * (1. - FLAGS.test_set_fraction))
+        train_end = validation_start = int(
+            validation_end - FLAGS.validation_set_size)
+
+        # create object from BatchFactory class
+        train_batch_factory = BatchFactory()
+
+        # add the dataset X labels
+        train_batch_factory.add_data_set("data",
+                                        protein_feature_filenames[:train_end],
+                                        grid_feature_filenames[:train_end])
+
+        # add the dataset Y labels
+        train_batch_factory.add_data_set("model_output",
+                                        protein_feature_filenames[:train_end],
+                                        key_filter=["aa_one_hot"])
+
+        # create object from BatchFactory class
+        validation_batch_factory = BatchFactory()
+
+        # add the dataset X labels
+        validation_batch_factory.add_data_set("data",
+                                            protein_feature_filenames[
+                                                validation_start:validation_end],
+                                            grid_feature_filenames[validation_start:validation_end])
+
+        # add the dataset Y labels
+        validation_batch_factory.add_data_set("model_output",
+                                            protein_feature_filenames[
+                                                validation_start:validation_end],
+                                            key_filter=["aa_one_hot"])
+
+        # create object from BatchFactory class
+        test_batch_factory = BatchFactory()
+
+        # add the dataset X labels
+        test_batch_factory.add_data_set("data",
+                                        protein_feature_filenames[test_start:],
+                                        grid_feature_filenames[test_start:])
+
+        # add the dataset Y labels
+        test_batch_factory.add_data_set("model_output",
+                                        protein_feature_filenames[test_start:],
+                                        key_filter=["aa_one_hot"])
+
+        return {'train': train_batch_factory, 'validation': validation_batch_factory, 'test': test_batch_factory}
+
+    def loss(self, logits, labels):
         with tf.name_scope('loss'):
-            cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=self.y_, logits=y_conv)
+            cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=labels, logits=logits)
             cross_entropy = tf.reduce_mean(cross_entropy)
+            tf.add_to_collection('losses', cross_entropy)
+            return tf.add_n(tf.get_collection('losses'), name='total_loss')
 
-        with tf.name_scope('learning_rate'):
-            global_step = tf.Variable(0, trainable=False)
-            starter_learning_rate = 0.1
-            learning_rate = tf.train.exponential_decay(starter_learning_rate, global_step, 100, 0.96, staircase=True)
-
-        with tf.name_scope('adam_optimizer'):
-            train_step = tf.train.AdamOptimizer(0.001, beta1=0.9, beta2=0.999, epsilon=1e-08).minimize(cross_entropy, global_step=global_step)
-
+    def accuracy(self, logits, labels):
         with tf.name_scope('accuracy'):
-            correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(self.y_, 1))
+            correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(self.labels, 1))
             correct_prediction = tf.cast(correct_prediction, tf.float32)
-            accuracy = tf.reduce_mean(correct_prediction)
+            return tf.reduce_mean(correct_prediction)
+
+    def train(self, session):
+        # Labels is a placeholder
+        logits = self.build_graph()
+        loss_op = self.loss(logits, self.labels)
+        optimize_op = self.optimizer.minimize(loss_op)
+        saver = tf.train.Saver(tf.all_variables())
+        batch_factory = self.batch_factory()
+
+        accuracy = self.accuracy(logits, self.labels)
 
         ### DEFINE SUMMARIES ###
         tf.summary.scalar("accuracy", accuracy)
-        tf.summary.scalar("cross_entropy", cross_entropy)
+        tf.summary.scalar("cross_entropy", loss_op)
         merged = tf.summary.merge_all()
 
         time_str = datetime.datetime.now().isoformat()
@@ -114,68 +186,51 @@ class Deep_cnn(object):
         train_writer.add_graph(tf.get_default_graph())
         validation_writer = tf.summary.FileWriter("./tmp/summary/validation/{}".format(datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')))
         test_writer = tf.summary.FileWriter("./tmp/summary/test/{}".format(datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')))
-        ### TRAIN MODEL ###
-        saver = tf.train.Saver()
-        with tf.Session() as sess:
-            sess.run(tf.global_variables_initializer())
-            #saver = tf.train.import_meta_graph('./model/model.cpkt.meta')
-            if os.path.isfile("./model/model.cpkt"):
-                saver.restore(sess, "./model/model.cpkt")
-            # set variables
-            prev_test_accuracy = 0.0
 
-            for i in range(40000):
-                batch, _ = train_batch_factory.next(10)
-                _, summary = sess.run([train_step, merged], feed_dict={
-                                    self.x: batch["data"], self.y_: batch["model_output"], self.keep_prob: 0.5})
-                if i % 10 == 0:
+        ### TRAIN MODEL ###
+        with session as sess:
+            sess.run(tf.global_variables_initializer())
+            if os.path.isfile("./model/model.ckpt"):
+                saver.restore(sess, "./model/model.ckpt")
+
+            # set variables
+            best_test_accuracy = 0.0
+
+            for step in range(self.max_steps):
+                batch, _ = batch_factory['train'].next(self.batch_size)
+                _, summary = sess.run([optimize_op, merged], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
+                if step % 10 == 0:
                     # Train accuracy
-                    summary, train_accuracy = sess.run([merged, accuracy], feed_dict={
-                                                    self.x: batch["data"], self.y_: batch["model_output"], self.keep_prob: 1.0})
-                    print('step %d, training accuracy %g' % (i, train_accuracy))
-                    train_writer.add_summary(summary, i)
+                    summary, train_accuracy = sess.run([merged, accuracy], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 1.0})
+                    print('step %d, training accuracy %g' % (step, train_accuracy))
+                    train_writer.add_summary(summary, step)
 
                     # Validation accuracy
-                    batch, _ = validation_batch_factory.next(10)
+                    batch, _ = batch_factory['validation'].next(10)
                     summary, validation_accuracy = sess.run([merged, accuracy],
-                    feed_dict={
-                                                            self.x: batch["data"], self.y_: batch["model_output"], self.keep_prob: 1.0})
-                    print('step %d, validation accuracy %g' %
-                        (i, validation_accuracy))
-                    validation_writer.add_summary(summary, i)
+                    feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 1.0})
+                    print('step %d, validation accuracy %g' %(step, validation_accuracy))
+                    validation_writer.add_summary(summary, step)
 
-                if i % 100 == 0:
-                    # Test accuracy
-                    batch, _ = test_batch_factory.next(75)
-                    summary, test_accuracy = sess.run([merged, accuracy], feed_dict={self.x: batch["data"], self.y_: batch["model_output"], self.keep_prob: 1.0})
-                    print('step %d, test accuracy %g' % (i, test_accuracy))
-                    test_writer.add_summary(summary, i)
-                    if test_accuracy > prev_test_accuracy:
-                        prev_test_accuracy = test_accuracy
-                        save_path = saver.save(sess, "model/model.cpkt")
-                        print("New model saved to path: ", save_path)
+                    # Save model if it has improved
+                    checkpoint_path = os.path.join('model', 'model.ckpt')
+                    saver.save(session, checkpoint_path, global_step=step)
+                    print("New model saved to path: ", checkpoint_path)
 
-    def load_graph(self):
+    def predict(self, session, x):
 
-        y_conv = self.build_graph()
+        logits = self.build_graph()
 
-        correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(self.y_, 1))
-        correct_prediction = tf.cast(correct_prediction, tf.float32)
-        accuracy = tf.reduce_mean(correct_prediction)
-
+        # Load model
         saver = tf.train.Saver()
-        with tf.Session() as sess:
+        ckpt = tf.train.get_checkpoint_state('model')
+        saver.restore(session, ckpt.model_checkpoint_path)
 
-            sess.run(tf.global_variables_initializer())
-            #saver = tf.train.import_meta_graph('./model/model.cpkt.meta')
-            saver.restore(sess, "model/model.cpkt")
+        with session as sess:
+            predicted_logits = sess.run([logits], feed_dict={self.x: x, self.keep_prob: 1.0})
 
-            file_path = './atomistic_features_cubed_sphere/1A0E_protein_features.npz'
+        return predicted_logits
 
-            with np.load(file_path) as data:
-                for aa in data['aa_one_hot']:
-                    inference_accuracy = y_conv.eval(feed_dict={self.x: aa, self.keep_prob: 1.0})
-                    print(inference_accuracy)
 
 # Set flags
 flags = tf.app.flags
@@ -191,103 +246,12 @@ FLAGS = flags.FLAGS
 
 
 def main(_):
-    ### GET DATA ###
-    # get proteins feature file names and grid feature file names
-    protein_feature_filenames = sorted(
-        glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
-    grid_feature_filenames = sorted(
-        glob.glob(os.path.join(FLAGS.input_dir, "*residue_features.npz")))
-
-    # Set range for validation and test set
-    validation_end = test_start = int(
-        len(protein_feature_filenames) * (1. - FLAGS.test_set_fraction))
-    train_end = validation_start = int(
-        validation_end - FLAGS.validation_set_size)
-
-    # create object from BatchFactory class
-    train_batch_factory = BatchFactory()
-
-    # add the dataset X labels
-    train_batch_factory.add_data_set("data",
-                                     protein_feature_filenames[:train_end],
-                                     grid_feature_filenames[:train_end])
-
-    # add the dataset Y labels
-    train_batch_factory.add_data_set("model_output",
-                                     protein_feature_filenames[:train_end],
-                                     key_filter=["aa_one_hot"])
-
-    # create object from BatchFactory class
-    validation_batch_factory = BatchFactory()
-
-    # add the dataset X labels
-    validation_batch_factory.add_data_set("data",
-                                          protein_feature_filenames[
-                                              validation_start:validation_end],
-                                          grid_feature_filenames[validation_start:validation_end])
-
-    # add the dataset Y labels
-    validation_batch_factory.add_data_set("model_output",
-                                          protein_feature_filenames[
-                                              validation_start:validation_end],
-                                          key_filter=["aa_one_hot"])
-
-    # create object from BatchFactory class
-    test_batch_factory = BatchFactory()
-
-    # add the dataset X labels
-    test_batch_factory.add_data_set("data",
-                                    protein_feature_filenames[test_start:],
-                                    grid_feature_filenames[test_start:])
-
-    # add the dataset Y labels
-    test_batch_factory.add_data_set("model_output",
-                                    protein_feature_filenames[test_start:],
-                                    key_filter=["aa_one_hot"])
-
-
-
-    # Build the graph for the deep net
-    deep_cnn = Deep_cnn()
-    deep_cnn.build_graph()
-    deep_cnn.train_graph(train_batch_factory, validation_batch_factory, test_batch_factory)
-
-
+    # Train the graph
+    with tf.Graph().as_default():
+        model = CNNModel()
+        session = tf.Session()
+        model.train(session)
 
 if __name__ == '__main__':
     print("starting")
-    #tf.app.run()
-
-
-protein_feature_filenames = sorted(
-    glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
-grid_feature_filenames = sorted(
-    glob.glob(os.path.join(FLAGS.input_dir, "*residue_features.npz")))
-
-# Set range for validation and test set
-validation_end = test_start = int(
-    len(protein_feature_filenames) * (1. - FLAGS.test_set_fraction))
-train_end = validation_start = int(
-    validation_end - FLAGS.validation_set_size)
-
-# create object from BatchFactory class
-train_batch_factory = BatchFactory()
-
-# add the dataset X labels
-train_batch_factory.add_data_set("data",
-                                protein_feature_filenames[:train_end],
-                                grid_feature_filenames[:train_end])
-
-# add the dataset Y labels
-train_batch_factory.add_data_set("model_output",
-                                protein_feature_filenames[:train_end],
-                                key_filter=["aa_one_hot"])
-
-batch, _ = train_batch_factory.next(10)
-
-print(batch["data"])
-
-# Build the graph for the deep net
-deep_cnn = Deep_cnn()
-deep_cnn.build_graph()
-deep_cnn.load_graph()
+    tf.app.run()
