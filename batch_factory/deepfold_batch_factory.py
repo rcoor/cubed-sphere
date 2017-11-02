@@ -8,6 +8,7 @@ Copyright Wouter Boomsma, Jes Frellsen, 2017
 from __future__ import absolute_import
 from __future__ import print_function
 import numpy as np
+
 from . import deepfold_grid as grid
 import random
 from six.moves import range
@@ -42,9 +43,24 @@ class ProteinData:
                     selected_feature_keys.append(key)
             self.features[key] = value
 
-        if "aa_one_hot" in list(protein_loader.keys()):
+        if "aa_one_hot" in protein_loader.keys():
             self.seq_length = protein_loader["aa_one_hot"].shape[0]
             # print "### seq length: ", self.seq_length
+
+        if "chain_boundary_indices" in protein_loader.keys():
+            chain_boundaries = self.features["chain_boundary_indices"]
+            #print chain_boundaries
+            ''' chain_ids = self.features["chain_ids"]
+            chain_values = []
+            for chain_index, boundary in enumerate(chain_boundaries[1:]):
+
+                length = boundary
+                if chain_index > 0:
+                    length -= chain_boundaries[1:][chain_index-1]
+                chain_values += [chain_ids[chain_index]]*length
+            self.features["chain_ids"] = np.array(chain_values, dtype='a5') '''
+            self.features["chain_ids"] = np.array([i for i in range(chain_boundaries[1:][0])])
+            #print self.features["chain_ids"]
 
         if len(selected_feature_keys) > 0:
             self.selected_features = self.features[selected_feature_keys[0]]
@@ -164,7 +180,7 @@ class ProteinGridData(ProteinData):
 
         start_index = 0
         for feature_name in self.features["residue_features"]:
-            feature_name = str(feature_name, 'utf-8')
+            feature_name = feature_name.decode("utf-8")
             if feature_name == "residue_index":
                 chain_index = np.searchsorted(self.features["chain_boundary_indices"], residue_index, side='right')-1
 
@@ -177,7 +193,7 @@ class ProteinGridData(ProteinData):
 
                 # full_feature = self.features[feature_name] - residue_index
                 # full_feature = np.arange(self.features['n_residues']).reshape((self.features['n_residues'],1)) - residue_index
-            else:
+            else :
                 full_feature = self.features[feature_name]
             feature = full_feature[selector]
             # print feature
@@ -263,11 +279,8 @@ class BatchFactory:
         if grid_feature_filenames is None:
             grid_feature_filenames = [None]*len(protein_feature_filenames)
 
-            ''' Theis added this '''
-            iterable = zip(sorted(protein_feature_filenames), grid_feature_filenames)
-        else:
-            iterable = zip(sorted(protein_feature_filenames), sorted(grid_feature_filenames))
-        for protein_feature_filename, grid_feature_filename in iterable:
+        for protein_feature_filename, grid_feature_filename in zip(sorted(protein_feature_filenames),
+                                                                   sorted(grid_feature_filenames)):
 
             pdb_id = os.path.basename(protein_feature_filename)[0:5]
 
@@ -295,14 +308,14 @@ class BatchFactory:
         '''Randomize order of pdb_ids'''
 
         # Randomize order
-        feature_pdb_ids = list(self.features.keys())
+        feature_pdb_ids = self.features.keys()
         random.shuffle(feature_pdb_ids)
 
         # Repopulate self.features_expanded
         self.features_expanded = []
         for pdb_id in feature_pdb_ids:
             n_residues = len(list(self.features[pdb_id].values())[0])
-            self.features_expanded += list(zip([pdb_id]*n_residues, list(range(n_residues))))
+            self.features_expanded += zip([pdb_id]*n_residues, range(n_residues))
 
         # Reset index counter
         self.feature_index = 0
@@ -319,7 +332,7 @@ class BatchFactory:
             subbatch_sizes = []
             if enforce_protein_boundaries:
                 pdb_ids = []
-                for i in range(max_size):
+                for i in xrange(max_size):
                     index = (self.feature_index+i) % len(self.features_expanded)
                     pdb_ids.append(self.features_expanded[index][0])
                 indices = sorted(np.unique(pdb_ids, return_index=True)[1])
@@ -394,7 +407,10 @@ class BatchFactory:
                 self.features[pdb_id][key].fetch_residue_features()
 
                 # Get residue features
-                residue_features[key][i] = self.features[pdb_id][key].get_residue_features(residue_index)
+                residue_features_value = self.features[pdb_id][key].get_residue_features(residue_index)
+                if residue_features[key][i].dtype is not residue_features_value.dtype:
+                    residue_features[key] = residue_features[key].astype(residue_features_value.dtype)
+                residue_features[key][i] = residue_features_value
 
             if include_pdb_ids:
                 residue_features["pdb"][i] = pdb_id
@@ -470,7 +486,7 @@ if __name__ == '__main__':
 
         data_size = 0
         while data_size < total_data_size:
-            print(data_size)
+
             # Extract the next batch
             batch, _ = batch_factory.next(options.max_batch_size)
 
@@ -478,7 +494,7 @@ if __name__ == '__main__':
             grid_matrix = batch["data"]
             labels = batch["model_output"]
 
-            print(total_data_size)
+
             print(grid_matrix.shape)
             # print grid_matrix
             print(labels.shape)

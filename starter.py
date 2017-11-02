@@ -229,6 +229,8 @@ class CNNModel(object):
         with session as sess:
             predicted_logits = sess.run([logits], feed_dict={self.x: x, self.keep_prob: 1.0})
 
+        # TODO: Here I need to have a tensor of size: (protein_size, patches, radius, xi, eta, channels) - can this work?
+
         return predicted_logits
 
 
