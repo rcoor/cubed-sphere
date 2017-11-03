@@ -33,16 +33,13 @@ def get_protein(input_dir, pdb_id, max_batch_size=25):
                                [protein_feature_filename],
                                key_filter=["chain_ids"])
 
-    batch, _ = batch_factory.next(50)
+    return batch_factory
 
-    #chain_ids = batch['chain_ids']
+#chain_ids = batch['chain_ids']
 
-    print(batch["data"].shape)
-    print(batch['chain_ids'])
-
-    ''' # Extract index of first residue from PDB - and attempt to use this as offset into model
-    pdb_parser = Bio.PDB.PDBParser()
-    structure = pdb_parser.get_structure(pdb_id, os.path.join(pdb_dir, pdb_id+".pdb")) '''
+''' # Extract index of first residue from PDB - and attempt to use this as offset into model
+pdb_parser = Bio.PDB.PDBParser()
+structure = pdb_parser.get_structure(pdb_id, os.path.join(pdb_dir, pdb_id+".pdb")) '''
 
 
-get_protein("./atomistic_features_cubed_sphere/", "1CML")
+# get_protein("./atomistic_features_cubed_sphere/", "1CML")

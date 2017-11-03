@@ -11,6 +11,7 @@ import time
 import datetime
 import math
 
+import pickle
 import numpy as np
 import pandas as pd
 
@@ -23,6 +24,16 @@ from delta_predict import get_protein
 import tensorflow as tf
 
 FLAGS = None
+
+# Set flags
+flags = tf.app.flags
+
+flags.DEFINE_string("input_dir", "./atomistic_features_cubed_sphere/", "Input path")
+flags.DEFINE_float("test_set_fraction", 0.25,"Fraction of data set aside for testing")
+flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
+flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
+
+FLAGS = flags.FLAGS
 
 class CNNModel(object):
     """deepnn builds the graph for a deep net for classifying residues.
@@ -41,64 +52,61 @@ class CNNModel(object):
     def __init__(self):
         # internal setting
         self.optimizer = tf.train.AdamOptimizer(0.001, beta1=0.9, beta2=0.999, epsilon=1e-08)
-        self.shape = [None, 6,24,38,38,2]
+        self.bias_initializer = tf.constant_initializer(0.0)
+        self.shape = [-1, 6, 24, 38, 38, 2]
         self.n_classes = 21
 
         # placeholders
         self.labels = tf.placeholder(tf.float32, shape=[None, self.n_classes])
-        self.x = tf.placeholder(tf.float32, shape=[None, 6,24,38,38,2])
-        self.keep_prob = tf.placeholder(tf.float32)
+        self.x = tf.placeholder(tf.float32, shape=[None, 6, 24, 38, 38, 2])
+        self.keep_prob = tf.placeholder_with_default(tf.constant(1.0), shape=None)
 
         # config
         self.batch_size = 10
         self.max_steps = 60000
 
-    def build_graph(self):
-        bias_initializer = tf.constant_initializer(0.0)
+    def _weight_variable(self, name, shape, stddev=0.1):
+        return tf.get_variable(name, shape, initializer=tf.truncated_normal_initializer(stddev=stddev, dtype=tf.float32))
 
-        def conv_layer(input, channels_in, channels_out, name="conv"):
-            with tf.name_scope(name):
-
-                W = tf.get_variable("W/{}".format(name), shape=[3,3,3, channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
-                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
-
-                conv = conv_spherical_cubed_sphere(input, W, strides=[1, 1, 1, 1, 1], padding="SAME")
-                act = tf.nn.relu(conv + b)
-                tf.summary.histogram("weights", W)
-                tf.summary.histogram("biases", b)
-                tf.summary.histogram("activations", act)
-                return avg_pool_spherical_cubed_sphere(act, ksize=[1, 1, 3, 3, 1], strides=[1,1,2,2,1], padding="VALID")
-
-        def reduce_dim(x):
+    def _reduce_dim(self, x):
             return reduce(operator.mul, x.shape.as_list()[1:], 1)
 
-        def fc_layer(input, channels_in, channels_out, name="fc"):
-            with tf.name_scope(name):
-                W = tf.get_variable("W/{}".format(name), shape=[channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
-                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
-                return tf.nn.relu(tf.matmul(input, W) + b)
+    def _fc_layer(self, input, channels_in, channels_out, name="fc"):
+        with tf.variable_scope(name):
+            W = self._weight_variable("weights", [channels_in, channels_out])
+            b = tf.get_variable("b", shape=[channels_out], initializer=self.bias_initializer, dtype=tf.float32)
+            return tf.nn.relu(tf.matmul(input, W) + b)
 
-        def out(input, channels_in, channels_out, name="out"):
-            with tf.name_scope(name):
-                W = tf.get_variable("W/{}".format(name), shape=[channels_in, channels_out], initializer=tf.truncated_normal_initializer(stddev=1.0, dtype=tf.float32))
-                b = tf.get_variable("b/{}".format(name), shape=[channels_out], initializer=bias_initializer, dtype=tf.float32)
-                return tf.matmul(input, W) + b
+    def _out_layer(self, input, channels_in, channels_out, name="out"):
+        with tf.variable_scope(name):
+            W = self._weight_variable("weights", [channels_in, channels_out])
+            b = tf.get_variable("b", shape=[channels_out], initializer=self.bias_initializer, dtype=tf.float32)
+            return tf.matmul(input, W) + b
 
+    def _conv_layer(self, input, channels_in, channels_out, name="conv"):
+        with tf.variable_scope(name) as scope:
+            W = self._weight_variable("weights", [3, 3, 3, channels_in, channels_out])
+            b = tf.get_variable("b", shape=[channels_out], initializer=self.bias_initializer, dtype=tf.float32)
+            convolution = conv_spherical_cubed_sphere(input, W, strides=[1, 1, 1, 1, 1], padding="SAME", name=name)
+            activation = tf.nn.relu(convolution + b)
+            return avg_pool_spherical_cubed_sphere(activation, ksize=[1, 1, 3, 3, 1], strides=[1,1,2,2,1], padding="VALID")
+
+    def _build_graph(self):
         # Reshape to use within a convolutional neural net.
         x = tf.reshape(self.x, shape=[-1, 6, 24, 38, 38, 2])
-        conv1 = conv_layer(x, 2, 16,  name="conv1")
-        conv2 = conv_layer(conv1, 16, 32,  name="conv2")
-        conv3 = conv_layer(conv2, 32, 64,  name="conv3")
-        conv4 = conv_layer(conv3, 64, 128,  name="conv4")
+        conv1 = self._conv_layer(x, 2, 16,  name="conv1")
+        conv2 = self._conv_layer(conv1, 16, 32,  name="conv2")
+        conv3 = self._conv_layer(conv2, 32, 64,  name="conv3")
+        conv4 = self._conv_layer(conv3, 64, 128,  name="conv4")
 
-        flattened = tf.reshape(conv4,  [-1, reduce_dim(conv4)])
+        flattened = tf.reshape(conv4,  [-1, self._reduce_dim(conv4)])
 
-        fc1 = fc_layer(flattened, reduce_dim(conv4), 2048, name="fc1")
+        fc1 = self._fc_layer(flattened, self._reduce_dim(conv4), 2048, name="fc1")
         drop_out = tf.nn.dropout(fc1, self.keep_prob)
-        fc2 = fc_layer(drop_out, 2048, 2048, name="fc2")
-        return out(fc2, 2048, self.n_classes)
+        fc2 = self._fc_layer(drop_out, 2048, 2048, name="fc2")
+        return self._out_layer(fc2, 2048, self.n_classes)
 
-    def batch_factory(self):
+    def _batch_factory(self):
         # get proteins feature file names and grid feature file names
         protein_feature_filenames = sorted(
             glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
@@ -154,14 +162,12 @@ class CNNModel(object):
 
         return {'train': train_batch_factory, 'validation': validation_batch_factory, 'test': test_batch_factory}
 
-    def loss(self, logits, labels):
+    def _loss(self, logits, labels):
         with tf.name_scope('loss'):
             cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=labels, logits=logits)
-            cross_entropy = tf.reduce_mean(cross_entropy)
-            tf.add_to_collection('losses', cross_entropy)
-            return tf.add_n(tf.get_collection('losses'), name='total_loss')
+            return tf.reduce_mean(cross_entropy)
 
-    def accuracy(self, logits, labels):
+    def _accuracy(self, logits, labels):
         with tf.name_scope('accuracy'):
             correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(self.labels, 1))
             correct_prediction = tf.cast(correct_prediction, tf.float32)
@@ -169,13 +175,13 @@ class CNNModel(object):
 
     def train(self, session):
         # Labels is a placeholder
-        logits = self.build_graph()
-        loss_op = self.loss(logits, self.labels)
+        logits = self._build_graph()
+        loss_op = self._loss(logits, self.labels)
         optimize_op = self.optimizer.minimize(loss_op)
-        saver = tf.train.Saver(tf.all_variables())
-        batch_factory = self.batch_factory()
+        saver = tf.train.Saver(tf.global_variables())
+        batch_factory = self._batch_factory()
 
-        accuracy = self.accuracy(logits, self.labels)
+        accuracy = self._accuracy(logits, self.labels)
 
         ### DEFINE SUMMARIES ###
         tf.summary.scalar("accuracy", accuracy)
@@ -191,8 +197,6 @@ class CNNModel(object):
         ### TRAIN MODEL ###
         with session as sess:
             sess.run(tf.global_variables_initializer())
-            if os.path.isfile("./model/model.ckpt"):
-                saver.restore(sess, "./model/model.ckpt")
 
             # set variables
             best_test_accuracy = 0.0
@@ -200,7 +204,7 @@ class CNNModel(object):
             for step in range(self.max_steps):
                 batch, _ = batch_factory['train'].next(self.batch_size)
                 _, summary = sess.run([optimize_op, merged], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
-                if step % 10 == 0:
+                if step % 100 == 0:
                     # Train accuracy
                     summary, train_accuracy = sess.run([merged, accuracy], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 1.0})
                     print('step %d, training accuracy %g' % (step, train_accuracy))
@@ -215,56 +219,55 @@ class CNNModel(object):
 
                     # Save model if it has improved
                     checkpoint_path = os.path.join('model', 'model.ckpt')
-                    saver.save(session, checkpoint_path, global_step=step)
+                    saver.save(session, checkpoint_path)
                     print("New model saved to path: ", checkpoint_path)
+
+    def _probabilities(self, logits):
+        with tf.name_scope('probabilities'):
+            return tf.nn.softmax(logits=logits)
 
     def predict(self, session, batch_factory):
 
-        logits = self.build_graph()
+        logits = self._build_graph()
 
         # Load model
         saver = tf.train.Saver()
-        ckpt = tf.train.get_checkpoint_state('model')
+        ckpt = tf.train.get_checkpoint_state('model/')
         saver.restore(session, ckpt.model_checkpoint_path)
 
-        logit_array = np.array([])
+        logit_array = []
 
         with session as sess:
             for i in range(batch_factory.data_size()):
                 batch, _ = batch_factory.next(1)
-                predicted_logits = sess.run([logits], feed_dict={self.x: batch["data"], self.keep_prob: 1.0})
-                np.append(logit_array, predicted_logits)
+                predicted_logits = sess.run([self._probabilities(logits)], feed_dict={self.x: batch["data"]})
+                print(predicted_logits)
+                logit_array.append(predicted_logits)
         # TODO: Here I need to have a tensor of size: (protein_size, patches, radius, xi, eta, channels) - can this work?
         print(predicted_logits)
+        np.savez("protein_logits", logit_array)
         return predicted_logits
-
-
-# Set flags
-flags = tf.app.flags
-
-flags.DEFINE_string(
-    "input_dir", "./atomistic_features_cubed_sphere/", "Input path")
-flags.DEFINE_float("test_set_fraction", 0.25,
-                   "Fraction of data set aside for testing")
-flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
-flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
-
-FLAGS = flags.FLAGS
-
 
 def main(_):
     # Train the graph
-    ''' with tf.Graph().as_default():
+    ''' tf.reset_default_graph()
+    with tf.Graph().as_default():
         model = CNNModel()
         session = tf.Session()
-        model.train(session) '''
+        model.batch_size = 10
+        model.train(session)
+        print(graph.get_shape) '''
 
     with tf.Graph().as_default():
         model = CNNModel()
         session = tf.Session()
-        pdb_batch_factory= get_protein("./atomistic_features_cubed_sphere/", "1CML")
-        model.predict(session, pdb_batch_factory)
+        model.batch_size = 1
+        model.predict(session, get_protein("./atomistic_features_cubed_sphere", "1A6M", max_batch_size=1))
+
 
 if __name__ == '__main__':
-    print("starting")
+    ''' model = CNNModel()
+    model.shape[0] = 10 # Batch size
+    graph = model._build_graph()
+    print(graph.get_shape) '''
     tf.app.run()

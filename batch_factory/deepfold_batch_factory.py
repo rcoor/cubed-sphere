@@ -279,8 +279,11 @@ class BatchFactory:
         if grid_feature_filenames is None:
             grid_feature_filenames = [None]*len(protein_feature_filenames)
 
-        for protein_feature_filename, grid_feature_filename in zip(sorted(protein_feature_filenames),
-                                                                   sorted(grid_feature_filenames)):
+            ''' Theis added this '''
+            iterable = zip(sorted(protein_feature_filenames), grid_feature_filenames)
+        else:
+            iterable = zip(sorted(protein_feature_filenames), sorted(grid_feature_filenames))
+        for protein_feature_filename, grid_feature_filename in iterable:
 
             pdb_id = os.path.basename(protein_feature_filename)[0:5]
 
@@ -308,7 +311,7 @@ class BatchFactory:
         '''Randomize order of pdb_ids'''
 
         # Randomize order
-        feature_pdb_ids = self.features.keys()
+        feature_pdb_ids = list(self.features.keys())
         random.shuffle(feature_pdb_ids)
 
         # Repopulate self.features_expanded
