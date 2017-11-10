@@ -1,0 +1,1313 @@
+pdbs/107LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpRTsI8o
+error_code:  0
+pdbs/160LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpplyp19
+error_code:  0
+pdbs/161LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp7OR4v4
+error_code:  0
+pdbs/162LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpNxjoAQ
+error_code:  0
+pdbs/163LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpNSKvty
+error_code:  0
+pdbs/164LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpRh_kIO
+error_code:  0
+pdbs/165LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpAsCVSC
+error_code:  0
+pdbs/171LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpo9NGMY
+*WARNING*: Residues TYR 161  and LYS 162  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues TYR 161  and LYS 162  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/171LA.pdb Failed: Chain breaks detected
+pdbs/1BF4A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1141.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 1166.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1198.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmptRu1uZ
+error_code:  0
+pdbs/1BNIA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3052.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3115.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 3187.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpWIZY6k
+error_code:  0
+pdbs/1BPIA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpbcWRWS
+error_code:  1
+pdbs/1BVCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp2vBEkz
+error_code:  0
+pdbs/1CEYA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpoIY4HV
+Removing redundant N-terminal N-H hydrogen atom from input model.
+error_code:  -11
+pdbs/1CEYA.pdb Failed: Reduce program returned a negative error code value.
+pdbs/1CSPA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkBamCQ
+error_code:  0
+pdbs/1CYOA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpGGy9Dt
+error_code:  0
+pdbs/1DYBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpUWpup4
+error_code:  0
+pdbs/1FKJA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpYE_0CS
+error_code:  0
+pdbs/1FTGA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpSX0sC4
+error_code:  1
+pdbs/1FXAA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1966.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1970.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1974.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2107.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpQtY9Fh
+error_code:  0
+pdbs/1HFZA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4562.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4563.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4564.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4565.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4566.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4592.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4612.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4620.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpjVHSIP
+error_code:  0
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM     20  N   GLU A   1      -3.175   9.773  11.989  1.00  0.00           N  , ATOM     19  HE3 MET A   1      -8.597   7.610   9.872  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:121: PDBConstructionWarning: WARNING: Residue (' ', 1, ' ') redefined at line 21.
+  PDBConstructionWarning)
+pdbs/1HFZA.pdb Failed: Blank altlocs in duplicate residue GLU (' ', 1, ' ') at line 21.
+pdbs/1HTIA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpyYRf9g
+error_code:  1
+pdbs/1HZ6A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1924.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2031.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2123.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpIObvVN
+error_code:  0
+pdbs/1IFCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpAiNgUB
+error_code:  1
+pdbs/1IOBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmprIL6ro
+error_code:  0
+pdbs/1L00A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpvd0_vv
+error_code:  0
+pdbs/1L02A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpg9xzV0
+error_code:  0
+pdbs/1L08A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEsQp6A
+error_code:  0
+pdbs/1L21A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpN6WcSN
+error_code:  0
+pdbs/1L22A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpqF4ZTd
+error_code:  0
+pdbs/1L33A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp3Ez032
+error_code:  0
+pdbs/1L60A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpJK57kt
+error_code:  0
+pdbs/1L63A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpNxDbHx
+error_code:  0
+pdbs/1L65A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmproo7ZG
+error_code:  0
+pdbs/1L66A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkJruV0
+error_code:  0
+pdbs/1L67A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp8AO96H
+error_code:  0
+pdbs/1L68A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpDyK4Ah
+error_code:  0
+pdbs/1L69A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpf6f6X1
+error_code:  0
+pdbs/1L85A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpzKjkqz
+error_code:  0
+pdbs/1L90A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkCfGWH
+error_code:  0
+pdbs/1L99A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmphWRGDb
+error_code:  1
+pdbs/1LHMA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp13XhPT
+error_code:  0
+pdbs/1LYHA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp0kYr2m
+error_code:  0
+pdbs/1LYJA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp9x19hd
+error_code:  0
+pdbs/1LZ1A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpIIsL71
+error_code:  0
+pdbs/1MJCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp2Nv4wa
+error_code:  0
+pdbs/1PGAA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEP1cgU
+error_code:  0
+pdbs/1RN1B.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2809.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2814.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2819.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2824.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2874.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2941.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpPf4zDh
+error_code:  0
+pdbs/1RX4A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpoWPJxy
+error_code:  0
+pdbs/1SHFA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpGhet7W
+error_code:  0
+pdbs/1SHGA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp9qGQ8w
+error_code:  0
+pdbs/1STNA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpdj2J5Z
+error_code:  0
+pdbs/1SUPA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpjh7706
+error_code:  1
+pdbs/1TENA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp7RF4Gu
+error_code:  0
+pdbs/1U5PA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp7Op2RB
+error_code:  1
+pdbs/1YCCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpG1Okwo
+*WARNING*: Residues PRO 71  and LYS 73  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues PRO 71  and LYS 73  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1YCCA.pdb Failed: Chain breaks detected
+pdbs/200LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpXqL7g_
+error_code:  0
+pdbs/219LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpydDdaH
+error_code:  0
+pdbs/227LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmplBRmwE
+error_code:  0
+pdbs/235LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpwY2GL6
+error_code:  0
+pdbs/236LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpz_9rdA
+error_code:  0
+pdbs/237LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp5L5QwT
+error_code:  0
+pdbs/238LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp0aZI9h
+error_code:  0
+pdbs/239LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpAx93CK
+error_code:  0
+pdbs/240LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpQVPz00
+error_code:  1
+pdbs/241LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpsO65Fe
+error_code:  0
+pdbs/242LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpeBelLC
+error_code:  0
+pdbs/243LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpHzwLjQ
+error_code:  0
+pdbs/244LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpyjOGtI
+error_code:  0
+pdbs/246LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp18p_rG
+error_code:  0
+pdbs/247LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmper7JeW
+error_code:  1
+pdbs/253LA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkehaga
+error_code:  0
+pdbs/2CI2I.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpc27iec
+error_code:  0
+pdbs/2LZMA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpxix151
+error_code:  0
+pdbs/4LYZA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpazBPia
+WARNING: A 125 ARG NH2  H atom too close to  A 119 ASP OD1  by 0.0194004A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  0
+pdbs/5AZUA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4460.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4465.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4466.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4467.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4468.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4540.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4615.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4686.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpt6yuov
+error_code:  1
+pdbs/1A2PA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 5705.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 5707.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 5709.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 5711.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 5979.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 6259.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpRP2Mt9
+error_code:  0
+pdbs/1AARA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1513.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1520.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpcOW5uo
+error_code:  1
+pdbs/1ACBI.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain E is discontinuous at line 2774.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain I is discontinuous at line 2887.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6xxSKr
+error_code:  0
+pdbs/1AM7A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4223.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4227.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4231.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4235.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4266.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4315.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpQqH17F
+*WARNING*: Residues ALA 16  and SER 18  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ALA 16  and SER 18  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ARG 72  and ASP 75  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ARG 72  and ASP 75  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ILE 123  and ALA 125  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ILE 123  and ALA 125  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1AM7A.pdb Failed: Chain breaks detected
+pdbs/1AMQA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmplTsEWC
+error_code:  1
+pdbs/1ANKA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4612.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4674.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4736.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4997.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpgUYQYn
+error_code:  0
+pdbs/1AXBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpTN3JIG
+error_code:  0
+pdbs/1AYFA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2054.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2058.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2068.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2129.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEB8xbL
+error_code:  0
+pdbs/1AZPA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1368.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 1402.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1429.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpCxb5FZ
+error_code:  0
+pdbs/1B0OA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpySQ3lE
+error_code:  0
+pdbs/1BLCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpBe3rwd
+WARNING: A 177 LYS N    H atom too close to  A 176 SER C    by 0.00722617A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  1
+pdbs/1BNZA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1305.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 1337.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1354.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpRX5Qk5
+error_code:  0
+pdbs/1BOYA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpl5GWDr
+error_code:  1
+pdbs/1BP2A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp9ulgOu
+error_code:  0
+pdbs/1C2RA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2203.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2246.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2289.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2337.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpjqyWOB
+error_code:  0
+pdbs/1C9OA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2591.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2625.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2643.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2929.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp7V_1Zi
+error_code:  0
+pdbs/1CAHA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpGEmSxB
+error_code:  1
+pdbs/1CDCA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 1897.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1951.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpWwODDK
+WARNING: A  99 GLU N    H atom too close to  A  98 LEU C    by 0.0120392A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  0
+pdbs/1CHKA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4099.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4126.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpsoGG8D
+error_code:  0
+pdbs/1CLWA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmppF49ef
+*WARNING*: Residues THR 400  and ASP 407  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 400  and ASP 407  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ARG 507  and SER 508  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ARG 507  and SER 508  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/1CLWA.pdb Failed: Chain breaks detected
+pdbs/1CYCA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 1972.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2015.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2058.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp4KZhBV
+WARNING: A   3 VAL N    H atom too close to  A   2 ASP C    by 0.00193035A
+        you may need to adjust using -METALBump or -NONMETALBump.
+WARNING: A  20 VAL N    H atom too close to  A  19 THR C    by 0.0142216A
+        you may need to adjust using -METALBump or -NONMETALBump.
+WARNING: A  27 LYS N    H atom too close to  A  26 HIS C    by 0.00103341A
+        you may need to adjust using -METALBump or -NONMETALBump.
+*WARNING*: Residues LEU 32  and TRP 33  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  32 LEU N    H atom too close to  A  31 ASN C    by 0.0199675A
+        you may need to adjust using -METALBump or -NONMETALBump.
+*WARNING*: Residues LEU 32  and TRP 33  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  33 TRP N    H atom too close to  A  33 TRP CA   by -0.337759A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  33 TRP N    H atom too close to  A  33 TRP CA   by -0.337759A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  33 TRP N    H atom too close to  A  33 TRP CA   by -0.337759A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+*WARNING*: Residues THR 40  and GLY 41  in chain  A are too close together 
+            and will be treated as a chain break
+*WARNING*: Residues THR 40  and GLY 41  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  41 GLY N    H atom too close to  A  41 GLY CA   by -0.159593A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  41 GLY N    H atom too close to  A  41 GLY CA   by -0.159593A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  41 GLY N    H atom too close to  A  40 THR C    by -0.0295763A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  41 GLY N    H atom too close to  A  41 GLY CA   by -0.159593A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+*WARNING*: Residues TRP 59  and ASN 60  in chain  A are too close together 
+            and will be treated as a chain break
+*WARNING*: Residues TRP 59  and ASN 60  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  60 ASN N    H atom too close to  A  60 ASN CA   by -0.276322A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  60 ASN N    H atom too close to  A  60 ASN CA   by -0.276322A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  60 ASN N    H atom too close to  A  59 TRP C    by -0.00102774A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  60 ASN N    H atom too close to  A  60 ASN CA   by -0.276322A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  61 GLU N    H atom too close to  A  60 ASN C    by 0.00162241A
+        you may need to adjust using -METALBump or -NONMETALBump.
+*WARNING*: Residues LYS 86  and LYS 87  in chain  A are too close together 
+            and will be treated as a chain break
+*WARNING*: Residues LYS 86  and LYS 87  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  87 LYS N    H atom too close to  A  87 LYS CA   by -0.192788A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  87 LYS N    H atom too close to  A  87 LYS CA   by -0.192788A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  87 LYS N    H atom too close to  A  87 LYS CA   by -0.192788A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+*WARNING*: Residues ASP 93  and LEU 94  in chain  A are too close together 
+            and will be treated as a chain break
+*WARNING*: Residues ASP 93  and LEU 94  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A  94 LEU N    H atom too close to  A  94 LEU CA   by -0.102268A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  94 LEU N    H atom too close to  A  94 LEU CA   by -0.102268A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A  94 LEU N    H atom too close to  A  94 LEU CA   by -0.102268A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+error_code:  0
+pdbs/1DILA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp1K_ZKt
+error_code:  1
+pdbs/1DPMA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 5606.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 5643.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 5680.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 5800.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpG3kr5Z
+error_code:  0
+pdbs/1DYJA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3056.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3089.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3119.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3347.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpZt4E2O
+error_code:  1
+pdbs/1EL1A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2556.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2557.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2558.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2633.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp5uQ0W9
+WARNING: A  86 ASP N    H atom too close to  A  85 ASP C    by 0.00128973A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  0
+pdbs/1FLVA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpWbdlMV
+error_code:  1
+pdbs/1FNFA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpg1Wcnl
+error_code:  1
+pdbs/1FRDA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEXmgsZ
+error_code:  0
+pdbs/1G6NA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3587.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3609.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3631.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3677.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6Q4QLD
+error_code:  0
+pdbs/1H7MA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpTTsNV5
+error_code:  0
+pdbs/1HFYA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2339.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2340.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2341.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2375.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEhThVk
+error_code:  0
+pdbs/1HK0X.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp7S4mK9
+*WARNING*: Residues GLY 85  and SER 87  in chain  X appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLY 85  and SER 87  in chain  X appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/1HK0X.pdb Failed: No template found for residue 86 (SER).  The set of atoms matches NSER, but the bonds are different.
+pdbs/1IDSA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6926.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6927.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 6928.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 6929.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6930.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 7110.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 7278.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 7431.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmptSrI5T
+error_code:  0
+pdbs/1IFBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpB1oGom
+error_code:  0
+pdbs/1IGVA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpyVb6YQ
+error_code:  0
+pdbs/1IHBA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2769.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2866.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp5FoWV4
+error_code:  1
+pdbs/1IO2A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpucWSql
+error_code:  0
+pdbs/1IR3A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2898.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3129.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp5r7rRI
+*WARNING*: Residues ILE 1157  and GLU 1159  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ILE 1157  and GLU 1159  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ASP 1161  and ARG 1164  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ASP 1161  and ARG 1164  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1IR3A.pdb Failed: Chain breaks detected
+pdbs/1IROA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpwfohdw
+error_code:  0
+pdbs/1JIWI.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain P is discontinuous at line 4924.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain I is discontinuous at line 5444.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp0QuMdC
+error_code:  0
+pdbs/1KFWA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmppJRYqi
+error_code:  0
+pdbs/1LMB4.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 1 is discontinuous at line 2617.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 2 is discontinuous at line 2653.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 3 is discontinuous at line 2680.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 4 is discontinuous at line 2728.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpQG4O7A
+error_code:  1
+pdbs/1LVEA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmplXC7GU
+WARNING: A  28 ASN N    H atom too close to  A  27FSER C    by 0.00724887A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  0
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    395  N   SER A  27      13.403  40.438   5.070  1.00  0.00           N  , ATOM    394 HE22 GLN A  27      11.017  40.953  -1.128  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    406  N   VAL A  27      12.039  40.641   8.343  1.00  0.00           N  , ATOM    405  HG  SER A  27      14.855  43.891   7.625  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    422  N   LEU A  27      12.062  42.641  10.082  1.00  0.00           N  , ATOM    421 HG23 VAL A  27      11.683  39.472  11.440  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    441  N   TYR A  27      10.653  45.347  11.671  1.00  0.00           N  , ATOM    440 HD23 LEU A  27      15.815  46.044  10.985  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    462  N   SER A  27      10.836  48.627  10.959  1.00  0.00           N  , ATOM    461  HH  TYR A  27       3.663  49.766  10.040  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    473  N   SER A  27       9.600  51.072  11.945  1.00  0.00           N  , ATOM    462  N   SER A  27      10.836  48.627  10.959  1.00  0.00           N  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    474  CA  SER A  27       9.042  52.117  12.843  1.00  0.00           C  , ATOM    463  CA  SER A  27      11.565  49.909  11.045  1.00  0.00           C  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    475  C   SER A  27       9.154  51.701  14.312  1.00  0.00           C  , ATOM    464  C   SER A  27      10.929  50.965  11.910  1.00  0.00           C  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    476  O   SER A  27       9.180  52.439  15.319  1.00  0.00           O  , ATOM    465  O   SER A  27      11.646  51.717  12.678  1.00  0.00           O  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    477  CB  SER A  27       7.590  52.420  12.394  1.00  0.00           C  , ATOM    466  CB  SER A  27      11.770  50.293   9.563  1.00  0.00           C  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    478  OG  SER A  27       7.491  53.851  12.034  1.00  0.00           O  , ATOM    467  OG  SER A  27      11.842  48.993   8.867  1.00  0.00           O  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    479  H   SER A  27       9.193  51.255  10.842  1.00  0.00           H  , ATOM    468  H   SER A  27      10.011  48.788  10.118  1.00  0.00           H  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    480  HA  SER A  27       9.608  53.168  12.823  1.00  0.00           H  , ATOM    469  HA  SER A  27      12.675  49.776  11.462  1.00  0.00           H  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    481  HB2 SER A  27       7.070  52.013  11.401  1.00  0.00           H  , ATOM    470  HB2 SER A  27      11.041  50.997   8.928  1.00  0.00           H  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    482  HB3 SER A  27       6.850  52.339  13.328  1.00  0.00           H  , ATOM    471  HB3 SER A  27      12.816  50.861   9.429  1.00  0.00           H  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:536: UserWarning: WARNING: duplicate atom (ATOM    483  HG  SER A  27       6.361  54.210  12.035  1.00  0.00           H  , ATOM    472  HG  SER A  27      12.310  49.134   7.786  1.00  0.00           H  )
+  warnings.warn("WARNING: duplicate atom (%s, %s)" % (atom, old_atom._pdb_string(old_atom.serial_number, atom.alternate_location_indicator)))
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:121: PDBConstructionWarning: WARNING: Residue (' ', 27, ' ') redefined at line 396.
+  PDBConstructionWarning)
+pdbs/1LVEA.pdb Failed: Blank altlocs in duplicate residue SER (' ', 27, ' ') at line 396.
+pdbs/1MGRA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6V5NuR
+error_code:  0
+pdbs/1MSIA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEl_FGx
+error_code:  0
+pdbs/1MYLA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2560.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2566.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2571.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 2575.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain E is discontinuous at line 2582.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain F is discontinuous at line 2592.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpIEWZRG
+error_code:  0
+pdbs/1N0JA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3739.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3740.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3741.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3836.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpglWgx9
+*WARNING*: Residues CYS 196  and LYS 197  in chain  A are too close together 
+            and will be treated as a chain break
+*WARNING*: Residues CYS 196  and LYS 197  in chain  A are too close together 
+            and will be treated as a chain break
+WARNING: A 197 LYS N    H atom too close to  A 196 CYS O    by -0.469727A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A 197 LYS N    H atom too close to  A 197 LYS CA   by -0.149503A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A 197 LYS N    H atom too close to  A 197 LYS CA   by -0.149503A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A 197 LYS N    H atom too close to  A 196 CYS O    by -0.73799A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+WARNING: A 197 LYS N    H atom too close to  A 197 LYS CA   by -0.149503A
+        if warning inappropriate, adjust the cuttoffs using -METALBump or -NONMETALBump.
+error_code:  1
+pdbs/1N0JA.pdb Failed: No template found for residue 197 (LYS).  The set of atoms is similar to NLYS, but it is missing 1 hydrogen atoms.
+pdbs/1OH0A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2398.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2418.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2442.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2538.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpPsOemr
+error_code:  0
+pdbs/1OIAA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2035.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2087.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpaFKcP7
+error_code:  1
+pdbs/1ONCA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpOWoyqN
+error_code:  0
+pdbs/1PINA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEJ5qfI
+*WARNING*: Residues GLY 39  and GLY 45  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLY 39  and GLY 45  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1PINA.pdb Failed: Chain breaks detected
+pdbs/1POHA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpo5g04w
+error_code:  0
+pdbs/1QLPA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmprr3JUE
+error_code:  1
+pdbs/1RGGA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6173.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6553.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp1ZP0OO
+WARNING: A   4 GLY N    H atom too close to  A   3 SER C    by 0.0125948A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  0
+pdbs/1RHGA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4525.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4564.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4603.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpNB2rMz
+*WARNING*: Residues LEU 61  and LEU 71  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LEU 61  and LEU 71  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues MET 126  and MET 137  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues MET 126  and MET 137  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1RHGA.pdb Failed: Chain breaks detected
+pdbs/1RISA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpmGYIdO
+error_code:  1
+pdbs/1ROPA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp67TgDC
+error_code:  0
+pdbs/1RROA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpahcTIk
+error_code:  0
+pdbs/1RTBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpIwTcd3
+error_code:  1
+pdbs/1RTBA.pdb Failed: No template found for residue 40 (CYS).  The set of atoms matches CYS, but the bonds are different.
+pdbs/1RTP1.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 1 is discontinuous at line 3020.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 2 is discontinuous at line 3022.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 3 is discontinuous at line 3024.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 1 is discontinuous at line 3026.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 2 is discontinuous at line 3076.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain 3 is discontinuous at line 3108.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpeHBXAz
+error_code:  0
+pdbs/1SCEA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3887.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 3889.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3890.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3963.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4040.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4093.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp52stEd
+error_code:  0
+pdbs/1TPKA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2461.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2462.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2463.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2464.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2504.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2525.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmplS8Rti
+error_code:  0
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    650  N   GLN A  42     -23.035 -40.424  -4.883  1.00  0.00           N  , ATOM    649  HB3 ALA A  42     -22.978 -37.303  -5.512  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    729  N   LYS A  47     -16.307 -38.141 -10.053  1.00  0.00           N  , ATOM    728  HA3 GLY A  47     -18.115 -39.871  -8.932  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM   1112  N   LEU A  70     -25.256 -28.954 -25.464  1.00  0.00           N  , ATOM   1111 HH22 ARG A  70     -29.293 -33.307 -29.547  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:121: PDBConstructionWarning: WARNING: Residue (' ', 42, ' ') redefined at line 651.
+  PDBConstructionWarning)
+pdbs/1TPKA.pdb Failed: Blank altlocs in duplicate residue GLN (' ', 42, ' ') at line 651.
+pdbs/1TUPA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6146.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6147.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 6148.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain E is discontinuous at line 6149.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain F is discontinuous at line 6171.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6185.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6383.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 6453.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpYHaOZu
+error_code:  0
+pdbs/1UBQA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6HYlS_
+error_code:  0
+pdbs/1VQBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpN2j7Ns
+error_code:  0
+pdbs/1W99A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpudKlip
+error_code:  1
+pdbs/1WQ5A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4556.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4627.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4669.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4765.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp_8Y1QW
+*WARNING*: Residues ASP 56  and GLN 65  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ASP 56  and GLN 65  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 183  and GLU 186  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 183  and GLU 186  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1WQ5A.pdb Failed: Chain breaks detected
+pdbs/1WQ5B.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp0iBTOJ
+*WARNING*: Residues LEU 1058  and ILE 1064  in chain  B appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LEU 1058  and ILE 1064  in chain  B appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 1183  and GLU 1186  in chain  B appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 1183  and GLU 1186  in chain  B appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1WQ5B.pdb Failed: Chain breaks detected
+pdbs/1Y4YA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2385.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2390.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2395.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2400.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2503.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2593.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpEYPO3i
+error_code:  0
+pdbs/1YEAA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpALvshJ
+*WARNING*: Residues PRO 71  and LYS 73  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues PRO 71  and LYS 73  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/1YEAA.pdb Failed: Chain breaks detected
+pdbs/1ZNJA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3044.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3051.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 3060.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 3067.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain E is discontinuous at line 3068.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain G is discontinuous at line 3075.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain H is discontinuous at line 3082.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain I is discontinuous at line 3083.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain K is discontinuous at line 3090.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 3097.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 3128.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 3157.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 3181.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain E is discontinuous at line 3216.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain F is discontinuous at line 3233.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain G is discontinuous at line 3262.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain H is discontinuous at line 3286.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain I is discontinuous at line 3313.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain J is discontinuous at line 3345.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain K is discontinuous at line 3371.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain L is discontinuous at line 3396.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpq9egG9
+error_code:  0
+pdbs/1ZNJB.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpOUEv4r
+error_code:  0
+pdbs/2A01A.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6567.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6611.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 6677.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6721.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6838.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 7028.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpdxEl3i
+error_code:  0
+pdbs/2ADAA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpVMLwqs
+error_code:  1
+pdbs/2AFGA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4609.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4614.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4619.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4624.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4629.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4645.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 4665.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain D is discontinuous at line 4674.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpT6yA0c
+error_code:  0
+pdbs/2AKYA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpVF4YeG
+Removing redundant N-terminal N-H hydrogen atom from input model.
+error_code:  -11
+pdbs/2AKYA.pdb Failed: Reduce program returned a negative error code value.
+pdbs/2BQAA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkglF0_
+error_code:  0
+pdbs/2CRKA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp9VTGvV
+*WARNING*: Residues THR 322  and SER 332  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues THR 322  and SER 332  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/2CRKA.pdb Failed: Chain breaks detected
+pdbs/2HMBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp_9YHS2
+error_code:  0
+pdbs/2HPRA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmptAS6rN
+*WARNING*: Residues LYS 82  and GLU 84  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LYS 82  and GLU 84  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/2HPRA.pdb Failed: Chain breaks detected
+pdbs/2IFBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpbohdKw
+error_code:  0
+pdbs/2IMMA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpy1YMPT
+error_code:  0
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    450  N   SER A  31     -18.693  63.480  46.268  1.00  0.00           N  , ATOM    449 HD22 ASN A  31     -20.621  66.415  43.770  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    461  N   GLY A  31     -21.181  63.799  45.230  1.00  0.00           N  , ATOM    460  HG  SER A  31     -19.918  64.877  49.297  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    468  N   ASN A  31     -21.039  63.617  42.091  1.00  0.00           N  , ATOM    467  HA3 GLY A  31     -22.610  65.168  43.992  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    482  N   GLN A  31     -19.387  61.346  41.939  1.00  0.00           N  , ATOM    481 HD22 ASN A  31     -19.160  67.279  39.930  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    499  N   LYS A  31     -16.534  61.924  41.395  1.00  0.00           N  , ATOM    498 HE22 GLN A  31     -18.769  57.869  46.647  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    521  N   ASN A  31     -13.005  62.526  41.259  1.00  0.00           N  , ATOM    520  HZ3 LYS A  31     -17.079  64.488  35.748  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:121: PDBConstructionWarning: WARNING: Residue (' ', 31, ' ') redefined at line 451.
+  PDBConstructionWarning)
+pdbs/2IMMA.pdb Failed: Blank altlocs in duplicate residue SER (' ', 31, ' ') at line 451.
+pdbs/2RN2A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp8cz3RO
+WARNING: A 154 GLU N    H atom too close to  A 153 VAL C    by 0.00785094A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  1
+pdbs/2TRXA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2160.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2193.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2218.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2293.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp33prpT
+error_code:  0
+pdbs/2TS1A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpV7Om4n
+*WARNING*: Residues GLY 211  and ARG 214  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLY 211  and ARG 214  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/2TS1A.pdb Failed: Chain breaks detected
+pdbs/2ZTAA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 879.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 902.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpLX79v3
+error_code:  0
+pdbs/3BCIA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6pN3i5
+error_code:  0
+pdbs/3BLSA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6137.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 6157.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 6214.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpU5Xy7o
+error_code:  1
+pdbs/3CHYA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp2qQO7W
+error_code:  1
+pdbs/3D2AA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpal88yh
+error_code:  1
+pdbs/3MBPA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpDGb2VL
+WARNING: A 328 GLU N    H atom too close to  A 327 GLY C    by 0.000833408A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  1
+pdbs/3PGKA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpO8G_en
+error_code:  0
+pdbs/3SSIA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpPEAv7w
+error_code:  0
+pdbs/451CA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpltRPiY
+error_code:  0
+pdbs/4BLMA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4570.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4575.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 4580.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 4833.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpwquxrW
+error_code:  0
+pdbs/5CROA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain O is discontinuous at line 2576.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 2594.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 2599.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain C is discontinuous at line 2612.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp9A4_cf
+error_code:  0
+pdbs/1ANFA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpZkVhAA
+WARNING: A   5 GLY N    H atom too close to  A   4 GLU C    by 0.00209712A
+        you may need to adjust using -METALBump or -NONMETALBump.
+error_code:  1
+pdbs/1AYEA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpWkcYQ1
+error_code:  1
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    497  N   LEU A  34      14.154  -1.186  -3.203  1.00  0.00           N  , ATOM    496  HE2 HIS A  34      11.249   5.568  -5.799  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/home/wb/.local/lib/python2.7/site-packages/simtk/openmm/app/internal/pdbstructure.py:442: UserWarning: WARNING: two consecutive residues with same number (ATOM    516  N   GLN A  34      13.223  -2.600  -1.205  1.00  0.00           N  , ATOM    515 HD23 LEU A  34      16.258  -2.846  -5.777  1.00  0.00           H  )
+  warnings.warn("WARNING: two consecutive residues with same number (%s, %s)" % (atom, self._current_residue.atoms[-1]))
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:121: PDBConstructionWarning: WARNING: Residue (' ', 34, ' ') redefined at line 498.
+  PDBConstructionWarning)
+pdbs/1AYEA.pdb Failed: Blank altlocs in duplicate residue LEU (' ', 34, ' ') at line 498.
+pdbs/1FKBA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpu8mGLk
+error_code:  0
+pdbs/1FMKA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpptqjfS
+*WARNING*: Residues ARG 409  and PHE 424  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues ARG 409  and PHE 424  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLN 526  and GLN 528  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLN 526  and GLN 528  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/1FMKA.pdb Failed: Chain breaks detected
+pdbs/1L23A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpvVbVGS
+error_code:  0
+pdbs/1QHEA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp6Cqmbr
+error_code:  1
+pdbs/1REXA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmp1FwP4D
+error_code:  0
+pdbs/2WSYA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmprLzWu5
+*WARNING*: Residues PRO 53  and THR 63  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues PRO 53  and THR 63  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LEU 176  and LEU 196  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LEU 176  and LEU 196  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLY 211  and GLY 213  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues GLY 211  and GLY 213  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues PRO 248  and MET 251  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues PRO 248  and MET 251  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  0
+pdbs/2WSYA.pdb Failed: Chain breaks detected
+pdbs/3HHRA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpME8Iqi
+error_code:  0
+pdbs/3HHRA.pdb Failed: Chain breaks detected
+pdbs/1B26A.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpCLRyq0
+error_code:  1
+pdbs/1B5MA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpFzhe2a
+error_code:  0
+pdbs/1BKSA.pdb
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain A is discontinuous at line 5470.
+  PDBConstructionWarning)
+/usr/lib/python2.7/dist-packages/Bio/PDB/StructureBuilder.py:85: PDBConstructionWarning: WARNING: Chain B is discontinuous at line 5575.
+  PDBConstructionWarning)
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpsEEidm
+*WARNING*: Residues LEU 177  and ALA 190  in chain  A appear unbonded 
+            and will be treated as a chain break
+*WARNING*: Residues LEU 177  and ALA 190  in chain  A appear unbonded 
+            and will be treated as a chain break
+error_code:  1
+pdbs/1BKSA.pdb Failed: Chain breaks detected
+pdbs/1C5GA.pdb
+/home/wb/bin/reduce.3.23.130521.linuxi386 -BUILD -DB /home/wb/bin/reduce_wwPDB_het_dict.txt -Quiet -Nterm10000 /tmp/tmpkjOqdG
+error_code:  1
