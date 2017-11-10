@@ -28,7 +28,7 @@ FLAGS = None
 # Set flags
 flags = tf.app.flags
 
-flags.DEFINE_string("input_dir", "./atomistic_features_cubed_sphere/", "Input path")
+flags.DEFINE_string("input_dir", "./data/atomistic_features_cubed_sphere/", "Input path")
 flags.DEFINE_float("test_set_fraction", 0.25,"Fraction of data set aside for testing")
 flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
 flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
@@ -262,7 +262,7 @@ def main(_):
         model = CNNModel()
         session = tf.Session()
         model.batch_size = 1
-        model.predict(session, get_protein("./atomistic_features_cubed_sphere", "1A6M", max_batch_size=1))
+        model.predict(session, get_protein("./data/atomistic_features_cubed_sphere", "1A6M", max_batch_size=1))
 
 
 if __name__ == '__main__':
