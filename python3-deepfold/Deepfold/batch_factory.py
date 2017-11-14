@@ -1,18 +1,6 @@
-'''
-Code to parse deepfold feature data and present it in batches
-for use in training
-
-Copyright Wouter Boomsma, Jes Frellsen, 2017
-'''
-
-from __future__ import absolute_import
-from __future__ import print_function
 import numpy as np
-
-from . import deepfold_grid as grid
 import random
-from six.moves import range
-from six.moves import zip
+from . import grid
 import os
 
 def get_batch(start_index, end_index, *values):
@@ -34,7 +22,7 @@ class ProteinData:
         self.seq_length = 0
         selected_feature_keys = []
         self.dimensions = 0
-        for key in protein_loader.keys():
+        for key in list(protein_loader.keys()):
             value = protein_loader[key]
             if len(value.shape) == 0:
                 value = np.asscalar(value)
@@ -43,25 +31,23 @@ class ProteinData:
                     selected_feature_keys.append(key)
             self.features[key] = value
 
-        if "aa_one_hot" in protein_loader.keys():
+        if "aa_one_hot" in list(protein_loader.keys()):
             self.seq_length = protein_loader["aa_one_hot"].shape[0]
             # print "### seq length: ", self.seq_length
-
-        if "chain_boundary_indices" in protein_loader.keys():
+            
+        if "chain_boundary_indices" in list(protein_loader.keys()):
             chain_boundaries = self.features["chain_boundary_indices"]
             #print chain_boundaries
-            ''' chain_ids = self.features["chain_ids"]
+            chain_ids = self.features["chain_ids"]
             chain_values = []
             for chain_index, boundary in enumerate(chain_boundaries[1:]):
-
                 length = boundary
                 if chain_index > 0:
                     length -= chain_boundaries[1:][chain_index-1]
                 chain_values += [chain_ids[chain_index]]*length
-            self.features["chain_ids"] = np.array(chain_values, dtype='a5') '''
-            self.features["chain_ids"] = np.array([i for i in range(chain_boundaries[1:][0])])
+            self.features["chain_ids"] = np.array(chain_values, dtype='a5')
             #print self.features["chain_ids"]
-
+            
         if len(selected_feature_keys) > 0:
             self.selected_features = self.features[selected_feature_keys[0]]
         for i in range(1, len(selected_feature_keys)):
@@ -72,7 +58,7 @@ class ProteinData:
         #     self.features_per_index.append([])
         #     for key in seq_features:
         #         self.features_per_index[-1].append(self.features[key][i])
-
+            
         # self.protein_feature_filename = protein_feature_filename
 
     def initialize_residue_features(self, size):
@@ -83,10 +69,10 @@ class ProteinData:
         #         self.features_per_index[-1].append(self.features[key][i])
         return np.zeros([size]+list(self.selected_features.shape[1:]))
         # return [None for i in range(size)]
-
+        
     def __len__(self):
         return self.seq_length
-
+        
     def fetch_residue_features(self):
         pass
 
@@ -100,11 +86,11 @@ class ProteinData:
         #     r_value.append(self.features[key][residue_index])
         # return np.array(r_value)
         # return self.features_per_index[residue_index]
-
-
+        
+    
 class ProteinGridData(ProteinData):
     '''Training data for a single protein, specialized for data in a ND grid layout'''
-
+    
     def __init__(self, protein_feature_filename, grid_feature_filename, max_sequence_distance=15, duplicate_origin=False):
         ProteinData.__init__(self, protein_feature_filename)
         # self.features = {}
@@ -113,7 +99,7 @@ class ProteinGridData(ProteinData):
         #     value = protein_loader[key]
         #     if len(value.shape) == 0:
         #         value = np.asscalar(value)
-        #     self.features[key] = value
+        #     self.features[key] = value 
         # self.n_residues = int(protein_loader["n_residues"])
         # self.max_radius = int(protein_loader["max_radius"])
         # self.n_features = int(protein_loader["n_features"])
@@ -139,7 +125,7 @@ class ProteinGridData(ProteinData):
 
     def initialize_residue_features(self, size):
         return np.zeros((size,) + self.grid_shape)
-
+        
     def fetch_residue_features(self):
         '''Read in residue information. This takes up quite some space, and is therefore
            not done by default during construction'''
@@ -154,7 +140,7 @@ class ProteinGridData(ProteinData):
         del self.indices_array
         self.selector_array = None
         self.indices_array = None
-
+        
     def get_residue_features(self, residue_index):
         '''Construct grid matrix from residue features'''
 
@@ -180,13 +166,13 @@ class ProteinGridData(ProteinData):
 
         start_index = 0
         for feature_name in self.features["residue_features"]:
-            feature_name = feature_name.decode("utf-8")
+
             if feature_name == "residue_index":
                 chain_index = np.searchsorted(self.features["chain_boundary_indices"], residue_index, side='right')-1
 
                 chain_selector = np.logical_and(self.features[feature_name] >= self.features["chain_boundary_indices"][chain_index],
                                                 self.features[feature_name] < self.features["chain_boundary_indices"][chain_index+1])
-
+                
                 full_feature = self.features[feature_name] - residue_index
                 full_feature = np.clip(full_feature, -self.max_sequence_distance, self.max_sequence_distance)
                 full_feature[np.logical_not(chain_selector)] = self.max_sequence_distance
@@ -220,7 +206,7 @@ class ProteinGridData(ProteinData):
         # # Limit data to indices specified by selector
         # masses = self.masses_full[selector]
         # charges = self.charges_full[selector]
-
+        
         # # Populate grid
         # grid_matrix[indices[:,0], indices[:,1], indices[:,2], 0] = masses[:,0]
         # grid_matrix[indices[:,0], indices[:,1], indices[:,2], 1] = charges[:,0]
@@ -239,7 +225,7 @@ class ProteinGridData(ProteinData):
         #             #grid_matrix[0, :, :, start_index:end_index] = self.features[feature_name + "_default"]
         #             grid_matrix[[0] + [slice(None)]*(grid_matrix.ndim-2) + [slice(start_index, end_index)]]
         #         start_index += feature.shape[1]
-
+        
         # Experiment: Set origin values in all theta,phi bins
         if (indices[:,0]==0).any() and self.coordinate_system == grid.CoordinateSystem.spherical and self.duplicate_origin:
             assert(np.count_nonzero(indices[:,0]==0) == 1)
@@ -249,23 +235,23 @@ class ProteinGridData(ProteinData):
         # index_phi = indices[index,2]
         # # print index, grid_matrix[0, :, :, :].shape, grid_matrix[0, index_theta, index_phi, :].shape
         # grid_matrix[0, :, :, :] = grid_matrix[0, index_theta, index_phi, :]
-
+        
         # Forget residue features again, if necessary
         if fetch_temporarily:
             self.forget_grid_features()
-
+        
         return grid_matrix
-
-
+    
+        
 class BatchFactory:
     '''Create batches for training'''
-
+    
     def __init__(self):
 
-        # pdb_id -> ProteinData map
+        # pdb_id -> ProteinData map 
         self.features = {}
 
-        # List of (pdb_ids, res_index) pairs
+        # List of (pdb_ids, res_index) pairs 
         self.features_expanded = []
 
         # Current index into features_expanded list
@@ -274,18 +260,13 @@ class BatchFactory:
         # Keep track of completed cycles through data
         self.epoch_count = 0
 
-        self.shuffle = True
-
     def add_data_set(self, key, protein_feature_filenames, grid_feature_filenames=None, key_filter=[], duplicate_origin=False):
 
         if grid_feature_filenames is None:
             grid_feature_filenames = [None]*len(protein_feature_filenames)
-
-            ''' Theis added this '''
-            iterable = zip(sorted(protein_feature_filenames), grid_feature_filenames)
-        else:
-            iterable = zip(sorted(protein_feature_filenames), sorted(grid_feature_filenames))
-        for protein_feature_filename, grid_feature_filename in iterable:
+        
+        for protein_feature_filename, grid_feature_filename in zip(sorted(protein_feature_filenames),
+                                                                   sorted(grid_feature_filenames)):
 
             pdb_id = os.path.basename(protein_feature_filename)[0:5]
 
@@ -304,12 +285,11 @@ class BatchFactory:
             self.features[pdb_id][key] = protein_data
 
         # Randomize order of proteins
-        if self.shuffle:
-            self.shuffle_features()
+        self.shuffle_features()
 
     def data_size(self):
         return len(self.features_expanded)
-
+            
     def shuffle_features(self):
         '''Randomize order of pdb_ids'''
 
@@ -321,13 +301,13 @@ class BatchFactory:
         self.features_expanded = []
         for pdb_id in feature_pdb_ids:
             n_residues = len(list(self.features[pdb_id].values())[0])
-            self.features_expanded += zip([pdb_id]*n_residues, range(n_residues))
+            self.features_expanded += list(zip([pdb_id]*n_residues, list(range(n_residues))))
 
         # Reset index counter
         self.feature_index = 0
 
-
-
+        
+        
     def next(self, max_size=10, enforce_protein_boundaries=True, subbatch_max_size=None, increment_counter=True, include_pdb_ids=False, return_single_proteins=False):
         '''Create next batch
         '''
@@ -338,7 +318,7 @@ class BatchFactory:
             subbatch_sizes = []
             if enforce_protein_boundaries:
                 pdb_ids = []
-                for i in xrange(max_size):
+                for i in range(max_size):
                     index = (self.feature_index+i) % len(self.features_expanded)
                     pdb_ids.append(self.features_expanded[index][0])
                 indices = sorted(np.unique(pdb_ids, return_index=True)[1])
@@ -403,10 +383,10 @@ class BatchFactory:
                 # grid_shape = self.features[pdb_id]["grid_shape"]
                 # grid_features = np.zeros((size, grid_shape[0], grid_shape[1], grid_shape[2], grid_shape[3]))
                 # labels = np.zeros(size, dtype=np.int8)
-
+                
                 if include_pdb_ids:
                     residue_features["pdb"] = [None for _ in range(size)]
-
+                
             for key in self.features[pdb_id]:
 
                 # Pre-fetch residue features
@@ -419,8 +399,8 @@ class BatchFactory:
                 residue_features[key][i] = residue_features_value
 
             if include_pdb_ids:
-                residue_features["pdb"][i] = pdb_id
-
+                residue_features["pdb"][i] = pdb_id 
+                
             # Keep track of which pdb_ids we have prefetched residue features for
             pdb_ids.append(pdb_id)
 
@@ -443,7 +423,7 @@ class BatchFactory:
         # Make sure that feature_index is correctly set to zero if running on the complete se.
         if max_size == len(self.features_expanded) and not return_single_proteins:
             assert(self.feature_index == 0)
-
+            
         return residue_features, subbatch_sizes
 
 
@@ -463,7 +443,7 @@ if __name__ == '__main__':
                         help="Size of validation set (taken out of training set)", type=int, default=10)
     parser.add_argument("--max-batch-size", dest="max_batch_size",
                         help="Maximum batch size used during training", type=int, default=100)
-
+    
     options = parser.parse_args()
 
     # Read in names of all feature files
@@ -472,7 +452,7 @@ if __name__ == '__main__':
 
     # Set range for validation and test set
     validation_end = test_start = int(len(protein_feature_filenames)*(1.-options.test_set_fraction))
-    train_end = validation_start = int(validation_end-options.validation_set_size)
+    train_end = validation_start = int(validation_end-options.validation_set_size)    
 
     # Create batch factory and add data sets
     batch_factory = BatchFactory()
@@ -493,7 +473,7 @@ if __name__ == '__main__':
         data_size = 0
         while data_size < total_data_size:
 
-            # Extract the next batch
+            # Extract the next batch 
             batch, _ = batch_factory.next(options.max_batch_size)
 
             # From the batch, data and labels can be extracted
@@ -505,4 +485,4 @@ if __name__ == '__main__':
             # print grid_matrix
             print(labels.shape)
             # print labels
-
+    

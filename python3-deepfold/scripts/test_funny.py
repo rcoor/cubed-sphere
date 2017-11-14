@@ -1,0 +1,31 @@
+if __name__ == '__main__':
+    from train import standard_arg_paser, generate_train_cmd, run_cmds, defaults, all_models, all_output_types
+    
+    parser = standard_arg_paser()
+    args = parser.parse_args()
+
+    # Settings
+    checkpoint_base_dir = "/scratch1/rwt891/data/deepfold/camara"
+    test_base_dir = "/scratch1/rwt891/data/deepfold/camara_cross_test"
+
+    id_number = "01"
+
+    # Generate commands
+    cmds = []
+
+    data_dir_base = "/scratch1/rwt891/data/cull_pdb_pc100_entries_170602/culled_pc30_res3.0_R0.3_d170611/"
+    data_name = "pc30"
+    num_passes = "10"
+
+    #for model in ["SphericalModel", "CubedSphereModel", "CartesianHighresModel"]:
+    for model in ["CubedSphereModel", "CartesianHighresModel"]:
+        for output_type in all_output_types:
+
+            cmd = generate_train_cmd(args.mode, model, output_type, data_name, defaults['regularization'],
+                                     defaults['learning_rate'], defaults['subbatch_size'], num_passes, id_number,
+                                     data_dir_base, checkpoint_base_dir, test_base_dir,
+                                     restore_checkpoint=args.restore_checkpoint, data_dir_postfix="_zbackbone")
+
+            cmds.append(cmd)
+
+    run_cmds(cmds=cmds, devices=['1', '2'], dry=args.dry, force=args.force)

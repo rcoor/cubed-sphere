@@ -238,6 +238,7 @@ class CNNModel(object):
         logit_array = []
 
         with session as sess:
+            print(batch_factory.data_size())
             for i in range(batch_factory.data_size()):
                 batch, _ = batch_factory.next(1)
                 predicted_logits = sess.run([self._probabilities(logits)], feed_dict={self.x: batch["data"]})
@@ -245,7 +246,6 @@ class CNNModel(object):
                 logit_array.append(predicted_logits)
         # TODO: Here I need to have a tensor of size: (protein_size, patches, radius, xi, eta, channels) - can this work?
         print(predicted_logits)
-        np.savez("protein_logits", logit_array)
         return predicted_logits
 
 def main(_):
@@ -262,8 +262,9 @@ def main(_):
         model = CNNModel()
         session = tf.Session()
         model.batch_size = 1
-        model.predict(session, get_protein("./data/atomistic_features_cubed_sphere", "1A6M", max_batch_size=1))
-
+        protein_name = "1A2P"
+        predicted_logits = model.predict(session, get_protein("./data/atomistic_features_cubed_sphere_ddg", protein_name, max_batch_size=1))
+        np.savez("protein_logits/{}".format(protein_name), predicted_logits)
 
 if __name__ == '__main__':
     ''' model = CNNModel()

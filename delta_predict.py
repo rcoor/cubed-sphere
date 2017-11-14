@@ -14,6 +14,9 @@ def get_protein(input_dir, pdb_id, max_batch_size=25):
 
     batch_factory = BatchFactory()
 
+    # make sure the protein isn't shuffled
+    #batch_factory.shuffle = False
+
     protein_feature_filename = os.path.join(input_dir, pdb_id+"_protein_features.npz")
     residue_feature_filename = os.path.join(input_dir, pdb_id+"_residue_features.npz")
     if not (os.path.exists(protein_feature_filename) and
