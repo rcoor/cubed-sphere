@@ -32,6 +32,8 @@ flags.DEFINE_string("input_dir", "./data/atomistic_features_cubed_sphere/", "Inp
 flags.DEFINE_float("test_set_fraction", 0.25,"Fraction of data set aside for testing")
 flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
 flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
+flags.DEFINE_boolean("train", False, "Define if this is a training session")
+flags.DEFINE_boolean("infer", False, "Define if this is a infering session")
 
 FLAGS = flags.FLAGS
 
@@ -249,26 +251,30 @@ class CNNModel(object):
         return predicted_logits
 
 def main(_):
-    # Train the graph
-    ''' tf.reset_default_graph()
-    with tf.Graph().as_default():
-        model = CNNModel()
-        session = tf.Session()
-        model.batch_size = 10
-        model.train(session)
-        print(graph.get_shape) '''
+    tf.reset_default_graph()
+    if FLAGS.train:
+        with tf.Graph().as_default():
+            model = CNNModel()
+            session = tf.Session()
+            model.batch_size = 10
+            model.train(session)
+            print(graph.get_shape)
 
-    with tf.Graph().as_default():
-        model = CNNModel()
-        session = tf.Session()
-        model.batch_size = 1
-        protein_name = "1A2P"
-        predicted_logits = model.predict(session, get_protein("./data/atomistic_features_cubed_sphere_ddg", protein_name, max_batch_size=1))
-        np.savez("protein_logits/{}".format(protein_name), predicted_logits)
+    if FLAGS.infer:
+        with tf.Graph().as_default():
+            model = CNNModel()
+            session = tf.Session()
+            model.batch_size = 1
+
+            # get filenames
+            protein_feature_filenames = sorted(glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
+            print(protein_feature_filenames)
+            for name in protein_feature_filenames:
+                protein_name = os.path.basename(name).split("_")[0]
+                print(protein_name)
+                #predicted_logits = model.predict(session, get_protein(FLAGS.input_dir, protein_name, max_batch_size=1))
+                #np.savez("protein_logits/{}".format(protein_name), predicted_logits)
+
 
 if __name__ == '__main__':
-    ''' model = CNNModel()
-    model.shape[0] = 10 # Batch size
-    graph = model._build_graph()
-    print(graph.get_shape) '''
     tf.app.run()
