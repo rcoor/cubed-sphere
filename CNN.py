@@ -20,8 +20,11 @@ import operator
 
 from directional import conv_spherical_cubed_sphere, avg_pool_spherical_cubed_sphere
 from batch_factory.deepfold_batch_factory import BatchFactory
-from delta_predict import get_protein
 import tensorflow as tf
+
+from Bio.PDB import PDBParser, MMCIFParser, Polypeptide
+from Bio.PDB.Polypeptide import PPBuilder
+from Bio.PDB import PDBList
 
 FLAGS = None
 
@@ -228,7 +231,7 @@ class CNNModel(object):
         with tf.name_scope('probabilities'):
             return tf.nn.softmax(logits=logits)
 
-    def predict(self, session, batch_factory):
+    def predict(self, session, data):
 
         logits = self._build_graph()
 
@@ -239,7 +242,7 @@ class CNNModel(object):
 
         logit_array = []
 
-        with session as sess:
+        ''' with session as sess:
             print(batch_factory.data_size())
             for i in range(batch_factory.data_size()):
                 batch, _ = batch_factory.next(1)
@@ -247,10 +250,15 @@ class CNNModel(object):
                 print(predicted_logits)
                 logit_array.append(predicted_logits)
         # TODO: Here I need to have a tensor of size: (protein_size, patches, radius, xi, eta, channels) - can this work?
-        print(predicted_logits)
+        print(predicted_logits) '''
+        with session as sess:
+            predicted_logits = sess.run([self._probabilities(logits)], feed_dict={self.x: data})
+
+
         return predicted_logits
 
 def main(_):
+    print("hej")
     tf.reset_default_graph()
     if FLAGS.train:
         with tf.Graph().as_default():
@@ -266,15 +274,34 @@ def main(_):
             session = tf.Session()
             model.batch_size = 1
 
-            # get filenames
+            ''' # get filenames
             protein_feature_filenames = sorted(glob.glob(os.path.join(FLAGS.input_dir, "*protein_features.npz")))
             print(protein_feature_filenames)
             for name in protein_feature_filenames:
                 protein_name = os.path.basename(name).split("_")[0]
                 print(protein_name)
-                #predicted_logits = model.predict(session, get_protein(FLAGS.input_dir, protein_name, max_batch_size=1))
-                #np.savez("protein_logits/{}".format(protein_name), predicted_logits)
+                p = get_protein(FLAGS.input_dir, protein_name, max_batch_size=1)
+                print(p)
 
+                #predicted_logits = model.predict(session, get_protein(FLAGS.input_dir, protein_name, max_batch_size=1))
+                #np.savez("protein_logits/{}".format(protein_name), predicted_logits) '''
+
+            ''' batchFactory = get_protein(FLAGS.input_dir, "107L", max_batch_size=1)
+            print(batchFactory.data_size())
+            batch, _ = batchFactory.next(batchFactory.data_size())
+            print(batch["data"][44-1])
+
+
+            # Fetch structure from .cif file
+            pdbl = PDBList()
+            pdbl.retrieve_pdb_file("107L", pdir="./data/PDB/")
+            structure = MMCIFParser().get_structure("107L", "{}{}.cif".format("./data/PDB/", "107L"))
+            # Build structures
+            ppb=PPBuilder()
+            for pp in ppb.build_peptides(structure):
+                seq = pp.get_sequence()
+                print(seq[44-1])
+                print(len(seq)) '''
 
 if __name__ == '__main__':
     tf.app.run()

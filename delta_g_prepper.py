@@ -4,23 +4,30 @@ from Bio.PDB.Polypeptide import PPBuilder
 from Bio.PDB import PDBList
 import os
 
-DATA_DIR = './data/'
+class DeltaPrepper:
+    ''' Generate delta g predictions from datasheets '''
 
-# Load curated dataset
-df = pd.read_csv(DATA_DIR+"ddgs/curatedprotherm.csv", skiprows=21)
+    def __init__(self):
+        self.dataframe = pd.DataFrame({'A' : []})
 
-# Print a sample
-print(df[['PDBFileID', 'Mutations','DDG']])
+    def load_data(self, input):
+        if not input:
+            raise ValueError("Input must be defined.")
 
-# Convert an array of length 4 to a pandas dataframe
-split_mut = lambda x: pd.Series({'chain':x[0], 'wildtype': x[1], 'position': x[2], 'mutation': x[3] })
+        # Load curated dataset
+        df = pd.read_csv(input, skiprows=21)
 
-# Split elements in the mutations column into seperate columns
-df_mut = df['Mutations'].apply(lambda m: split_mut(m.split(' ')))
-df = pd.concat([df, df_mut], axis=1)
+        # Convert an array of length 4 to a pandas dataframe
+        split_mut = lambda x: pd.Series({'chain':x[0], 'wildtype': x[1], 'position': x[2], 'mutation': x[3] })
+
+        # Split elements in the mutations column into seperate columns
+        df_mut = df['Mutations'].apply(lambda m: split_mut(m.split(' ')))
+        df = pd.concat([df, df_mut], axis=1)
+        self.dataframe = df
 
 
-def download_structure(PDFFileID):
+
+''' def download_structure(PDFFileID):
     pdbl = PDBList()
     pdbl.retrieve_pdb_file(PDFFileID, pdir="./data/PDB/")
     #structure = MMCIFParser().get_structure(PDFFileID, "PDB/{}.cif".format(PDFFileID))
@@ -42,4 +49,4 @@ for PDFFileID in df['PDBFileID'].unique():
     fetch_structure(PDFFileID)
 
 print(df.head(200))
-fetch_structure('1A2P')
+fetch_structure('1A2P') '''
