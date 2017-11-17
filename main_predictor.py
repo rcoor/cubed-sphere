@@ -20,7 +20,7 @@ def get_aa_probs(pdb_id, wildtype, mutation, position):
     print(pdb_id, wildtype, mutation, position)
     file_path = FLAGS.input_features
     batchFactory = getIndividualProteins.create_batch(file_path, pdb_id, 1)
-    batch, _ = batchFactory.next(batchFactory.data_size())
+    batch, _ = batchFactory.next(1)
     aa_data = batch['data'][int(position)-1]
 
     with tf.Graph().as_default():
