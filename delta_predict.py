@@ -9,7 +9,7 @@ class GetIndividualProteins:
     def __init__(self):
         self
 
-    def create_batch(self, input_dir, pdb_id, max_batch_size=25):
+    def create_batch(self, input_dir, pdb_id):
 
         if len(pdb_id) == 5:
             chain_id = pdb_id[4]

@@ -5,6 +5,8 @@ for use in training
 Copyright Wouter Boomsma, Jes Frellsen, 2017
 '''
 
+
+
 from __future__ import absolute_import
 from __future__ import print_function
 import numpy as np
@@ -14,6 +16,8 @@ import random
 from six.moves import range
 from six.moves import zip
 import os
+
+
 
 def get_batch(start_index, end_index, *values):
     values_batch = []
@@ -338,7 +342,7 @@ class BatchFactory:
             subbatch_sizes = []
             if enforce_protein_boundaries:
                 pdb_ids = []
-                for i in xrange(max_size):
+                for i in range(max_size):
                     index = (self.feature_index+i) % len(self.features_expanded)
                     pdb_ids.append(self.features_expanded[index][0])
                 indices = sorted(np.unique(pdb_ids, return_index=True)[1])
@@ -380,7 +384,9 @@ class BatchFactory:
                 # subbatch_size_array[np.random.choice(len(subbatch_size_array), remainder, replace=False)] += 1
                 subbatch_size_array[np.arange(remainder)] += 1
                 subbatch_sizes = subbatch_size_array
-            assert(np.sum(subbatch_sizes) == size)
+
+            print(np.sum(subbatch_sizes), size)
+            assert(int(np.sum(subbatch_sizes)) == size)
 
         residue_features = None
         pdb_ids = []
