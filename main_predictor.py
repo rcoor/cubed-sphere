@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 from CNN import CNNModel
 from Bio.PDB import Polypeptide
+from Bio.PDB import PDBList
+import Bio
 import os
 
 from batch_factory.deepfold_batch_factory import BatchFactory
@@ -16,6 +18,7 @@ flags.DEFINE_string(
     "input_delta", "/Users/thorn/Documents/projects/cubed-sphere/data/ddgs/kellogg.csv", "Input path")
 flags.DEFINE_string("input_features", "/Users/thorn/Documents/projects/cubed-sphere/data/atomistic_features_cubed_sphere_ddg",
                     "Fraction of data set aside for testing")
+flags.DEFINE_string("pdb_dir", "/Users/thorn/Documents/projects/cubed-sphere/data/PDB/", "Path to PDB files")
 
 FLAGS = flags.FLAGS
 
@@ -47,9 +50,9 @@ def prepare_batch(input_dir_features, pdb_id):
                                [protein_feature_filename],
                                key_filter=["aa_one_hot"])
 
-    batch_factory.add_data_set("chain_ids",
+    ''' batch_factory.add_data_set("chain_ids",
                                [protein_feature_filename],
-                               key_filter=["chain_ids"])
+                               key_filter=["chain_ids"]) '''
 
     return batch_factory
 
@@ -89,6 +92,7 @@ def get_aa_probs(pdb_id, wildtype, mutation, position):
         return logits
 
 def predict_ddg(input_dir_features, pdb_id, mutations):
+    mutation_dataframe = []
 
     chain_id = None
     if len(pdb_id) == 5:
@@ -98,20 +102,27 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
     batch_factory = prepare_batch(
         input_dir_features=input_dir_features, pdb_id=pdb_id)
 
-    batch, sub_batch_sizes = batch_factory.next(batch_factory.data_size(), subbatch_max_size=25, enforce_protein_boundaries=True)
+    print(batch_factory.data_size())
+    batch, _ = batch_factory.next(batch_factory.data_size())
 
     # Extract index of first residue from PDB - and attempt to use this as
     # offset into model
-    pdb_parser = Bio.PDB.PDBParser()
-    structure = pdb_parser.get_structure(
-        pdb_id, os.path.join(pdb_dir, pdb_id + ".pdb"))
+    mmcif_parser = Bio.PDB.MMCIFParser()
+
+    cif_path = os.path.join(FLAGS.pdb_dir, pdb_id + ".cif")
+
+    if not os.path.exists(cif_path):
+        pdbl = PDBList()
+        pdbl.retrieve_pdb_file(pdb_id, pdir="./data/PDB/")
+
+    structure = mmcif_parser.get_structure(pdb_id, cif_path)
 
     # Loop through all rows
     for _, mutation in mutations.iterrows():
-        *mutation[['PDBFileID','chain','wildtype', 'mutation', 'position']]
+        #mutation[['PDBFileID','chain','wildtype', 'mutation', 'position']]
 
-        wt, res_id, mutant = *mutation[['wildtype', 'position', 'mutation']]
-
+        wt, res_id, mutant, chain = mutation[['wildtype', 'position', 'mutation', 'chain']]
+        print(wt, res_id, mutant)
         icode = ' '
         if res_id.isdigit():
             res_index = int(res_id)
@@ -120,16 +131,63 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
             icode = res_id.replace(res_index, "")
             res_index = int(res_index)
 
+        try:
+            # Extract residue in PDB
+            pdb_res = structure[0][chain][(' ', res_index, icode)]
+        except KeyError:
+            raise MissingResidueError("Missing residue: " + str((' ', res_index, icode)) + ". Perhaps a removed HETATM?")
 
-    try:
-        # Extract residue in PDB
-        pdb_res = structure[0][chain_id][(' ', res_index, icode)]
-    except KeyError:
-        raise MissingResidueError("Missing residue: " + str((' ', res_index, icode)) + ". Perhaps a removed HETATM?")
+        # Check that PDB and mutation record agree on wt
+        assert(Bio.PDB.Polypeptide.three_to_one(pdb_res.get_resname()) == wt)
 
-    # Check that PDB and mutation record agree on wt
-    assert(Bio.PDB.Polypeptide.three_to_one(pdb_res.get_resname()) == wt)
+        chain_res_index = structure[0][chain].get_list().index(pdb_res)
 
+        mutant_index = Bio.PDB.Polypeptide.one_to_index(mutant)
+        wt_index = Bio.PDB.Polypeptide.one_to_index(wt)
+
+        with tf.Graph().as_default():
+            model = CNNModel()
+            logits = model.predict(tf.Session(), [batch['data'][res_index - 1]])[0][0]
+            # wildtype and mutant probability:
+            print("Wildtype prob: {} and mutation prob: {}.".format(logits[wt_index], logits[mutant_index]))
+            mutation['w_prob'] = logits[wt_index]
+            mutation['m_prob'] = logits[mutant_index]
+            #print(pd.DataFrame(mutation).transpose())
+
+        mutation_dataframe.append(pd.DataFrame(mutation).transpose())
+
+
+        ''' Her er det svært uden chain_ids '''
+        #model_chain_index_offset = np.nonzero(chain_ids==chain_id)[0][0]
+
+        #model_res_index = model_chain_index_offset + chain_res_index
+
+    return pd.concat(mutation_dataframe)
+    # TODO: forklar!
+
+    ''' model_sequence = ""
+    for index in np.argmax(batch["model_output"], axis=1):
+        if index < 20:
+            model_sequence += Bio.PDB.Polypeptide.index_to_one(index)
+        else:
+            model_sequence += 'X'
+    #assert(model_sequence[model_res_index] == wt)
+
+    wt_aa_index = Bio.PDB.Polypeptide.one_to_index(wt)
+    mutant_aa_index = Bio.PDB.Polypeptide.one_to_index(mutant) '''
+
+
+
+
+    ''' wt_aa_index = Bio.PDB.Polypeptide.one_to_index(wt)
+    mutant_aa_index = Bio.PDB.Polypeptide.one_to_index(mutant)
+
+    res_batch = dict(zip(batch.keys(), get_batch(model_res_index, model_res_index+1, *batch.values())))
+    res_sub_batch_sizes = [1]
+    aa_dist_at_res = model.infer(res_batch, res_sub_batch_sizes)[0]
+
+    prob_wt = aa_dist_at_res[wt_aa_index]
+    prob_mutant = aa_dist_at_res[mutant_aa_index] '''
 
 
 
@@ -144,18 +202,24 @@ if not dp.dataframe.empty:
     dp.dataframe['w_prob'] = pd.Series(np.random.randn(sLength), index=dp.dataframe.index)
     dp.dataframe['m_prob'] = pd.Series(np.random.randn(sLength), index=dp.dataframe.index)
 
-    # Only take the head
-    mutations = dp.dataframe.iloc[6:]
-
-    print(*mutation[['PDBFileID','chain','wildtype', 'mutation', 'position']])
 
 
-try:
-    predict_ddg(FLAGS.input_features, pdb_id="1ANK", mutations=mutations)
+    #mutations = dp.dataframe
 
-except MissingResidueError as e:
-    print("SKIPPING DUE TO MissingResidueError: ", e)
+complete_mutations_dataframe = []
+for pdb in dp.dataframe['PDBFileID'].unique():
+    mutations = dp.dataframe[dp.dataframe['PDBFileID'].str.contains(pdb) == True]
+    print(pdb)
+    try:
+        mutation_dataframe = predict_ddg(FLAGS.input_features, pdb_id=pdb, mutations=mutations)
+        print(mutation_dataframe)
+        complete_mutations_dataframe.append(mutation_dataframe)
+    except MissingResidueError as e:
+        print("SKIPPING DUE TO MissingResidueError: ", e)
 
+df = pd.concat(complete_mutations_dataframe)
+df.to_pickle('./{}.pickle'.format(os.path.basename(FLAGS.input_delta)))
+df.to_csv('./{}.csv'.format(os.path.basename(FLAGS.input_delta)))
 
 ''' # Prepare the DataPrepper
 dp = DeltaPrepper()

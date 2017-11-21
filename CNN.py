@@ -31,7 +31,7 @@ FLAGS = None
 # Set flags
 flags = tf.app.flags
 
-flags.DEFINE_string("input_dir", "./data/atomistic_features_cubed_sphere/", "Input path")
+flags.DEFINE_string("input_dir", "./data/atomistic_features_cubed_sphere_train/", "Input path")
 flags.DEFINE_float("test_set_fraction", 0.25,"Fraction of data set aside for testing")
 flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
 flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")

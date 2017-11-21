@@ -32,7 +32,7 @@ class ProteinData:
     '''Training data for a single protein, summarizing info at protein and residue level'''
 
     def __init__(self, protein_feature_filename, key_filter=[]):
-
+        self.prev = 0 # remove later
         self.features = {}
         protein_loader = np.load(protein_feature_filename)
         self.seq_length = 0
@@ -98,6 +98,12 @@ class ProteinData:
         pass
 
     def get_residue_features(self, residue_index):
+        ''' print(residue_index)
+        if residue_index >= 214:
+            print(residue_index)
+            residue_index = self.prev
+        else:
+            self.prev = residue_index '''
         return self.selected_features[residue_index]
         # r_value = []
         # for key in self.seq_features:
@@ -367,7 +373,7 @@ class BatchFactory:
                     n_subbatches = (length//subbatch_max_size)
                     if length%subbatch_max_size > 0:
                         n_subbatches += 1
-                    subbatch_size_array = np.array([length/n_subbatches]*n_subbatches)
+                    subbatch_size_array = np.array([length//n_subbatches]*n_subbatches)
                     remainder = length%n_subbatches
                     # subbatch_size_array[np.random.choice(len(subbatch_size_array), remainder, replace=False)] += 1
                     subbatch_size_array[np.arange(remainder)] += 1
@@ -385,8 +391,9 @@ class BatchFactory:
                 subbatch_size_array[np.arange(remainder)] += 1
                 subbatch_sizes = subbatch_size_array
 
+            print(subbatch_sizes)
             print(np.sum(subbatch_sizes), size)
-            assert(int(np.sum(subbatch_sizes)) == size)
+            assert(np.sum(subbatch_sizes) == size)
 
         residue_features = None
         pdb_ids = []
