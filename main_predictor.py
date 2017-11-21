@@ -142,19 +142,23 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
 
         chain_res_index = structure[0][chain].get_list().index(pdb_res)
 
-        mutant_index = Bio.PDB.Polypeptide.one_to_index(mutant)
-        wt_index = Bio.PDB.Polypeptide.one_to_index(wt)
+        try:
+            mutant_index = Bio.PDB.Polypeptide.one_to_index(mutant)
+            wt_index = Bio.PDB.Polypeptide.one_to_index(wt)
 
-        with tf.Graph().as_default():
-            model = CNNModel()
-            logits = model.predict(tf.Session(), [batch['data'][res_index - 1]])[0][0]
-            # wildtype and mutant probability:
-            print("Wildtype prob: {} and mutation prob: {}.".format(logits[wt_index], logits[mutant_index]))
-            mutation['w_prob'] = logits[wt_index]
-            mutation['m_prob'] = logits[mutant_index]
-            #print(pd.DataFrame(mutation).transpose())
+            with tf.Graph().as_default():
+                model = CNNModel()
+                logits = model.predict(tf.Session(), [batch['data'][res_index - 1]])[0][0]
+                # wildtype and mutant probability:
+                print("Wildtype prob: {} and mutation prob: {}.".format(logits[wt_index], logits[mutant_index]))
+                mutation['w_prob'] = logits[wt_index]
+                mutation['m_prob'] = logits[mutant_index]
+                #print(pd.DataFrame(mutation).transpose())
 
-        mutation_dataframe.append(pd.DataFrame(mutation).transpose())
+            mutation_dataframe.append(pd.DataFrame(mutation).transpose())
+
+            except Exception:
+                continue
 
 
         ''' Her er det svært uden chain_ids '''
