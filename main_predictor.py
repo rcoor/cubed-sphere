@@ -109,7 +109,7 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
     # offset into model
     mmcif_parser = Bio.PDB.MMCIFParser()
 
-    cif_path = os.path.join(FLAGS.pdb_dir, pdb_id + ".cif")
+    cif_path = os.path.join(FLAGS.pdb_dir, pdb_id.lower() + ".cif")
 
     if not os.path.exists(cif_path):
         pdbl = PDBList()
