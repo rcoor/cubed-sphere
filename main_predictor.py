@@ -157,8 +157,8 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
 
             mutation_dataframe.append(pd.DataFrame(mutation).transpose())
 
-            except Exception:
-                continue
+        except Exception:
+            continue
 
 
         ''' Her er det svært uden chain_ids '''
