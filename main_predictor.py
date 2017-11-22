@@ -165,8 +165,9 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
         #model_chain_index_offset = np.nonzero(chain_ids==chain_id)[0][0]
 
         #model_res_index = model_chain_index_offset + chain_res_index
-
-    return pd.concat(mutation_dataframe)
+    if len(mutation_dataframe) > 0:
+         return pd.concat(mutation_dataframe)
+    return []
     # TODO: forklar!
 
     ''' model_sequence = ""
