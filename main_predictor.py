@@ -208,7 +208,7 @@ if not dp.dataframe.empty:
 
 
 
-    #mutations = dp.dataframe
+    dp.dataframe = dp.dataframe.tail(10)
 
 complete_mutations_dataframe = []
 for pdb in dp.dataframe['PDBFileID'].unique():
@@ -217,13 +217,13 @@ for pdb in dp.dataframe['PDBFileID'].unique():
     try:
         mutation_dataframe = predict_ddg(FLAGS.input_features, pdb_id=pdb, mutations=mutations)
         print(mutation_dataframe)
-        complete_mutations_dataframe.append(mutation_dataframe)
+        complete_mutations_dataframe.append(pd.DataFrame(mutation_dataframe))
     except MissingResidueError as e:
         print("SKIPPING DUE TO MissingResidueError: ", e)
 
 df = pd.concat(complete_mutations_dataframe)
-df.to_pickle('./{}.pickle'.format(os.path.basename(FLAGS.input_delta)))
-df.to_csv('./{}.csv'.format(os.path.basename(FLAGS.input_delta)))
+df.to_pickle('./{}.pickle'.format(os.path.basename(FLAGS.input_delta).split('.')[0]))
+df.to_csv('./{}.csv'.format(os.path.basename(FLAGS.input_delta).split('.')[0]))
 
 ''' # Prepare the DataPrepper
 dp = DeltaPrepper()
