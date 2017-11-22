@@ -8,7 +8,7 @@ from Bio.PDB import Polypeptide
 from Bio.PDB import PDBList
 import Bio
 import os
-
+import re
 from batch_factory.deepfold_batch_factory import BatchFactory
 
 # Set flags
