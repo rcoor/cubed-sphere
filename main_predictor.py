@@ -208,7 +208,7 @@ if not dp.dataframe.empty:
 
 
 
-    dp.dataframe = dp.dataframe.tail(10)
+    # dp.dataframe = dp.dataframe.tail(10)
 
 complete_mutations_dataframe = []
 for pdb in dp.dataframe['PDBFileID'].unique():
