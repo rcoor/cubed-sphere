@@ -243,7 +243,7 @@ save_dir = "data/result_dataframes/"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 df.to_pickle(save_dir+'{}.pickle'.format(os.path.basename(FLAGS.input_delta).split('.')[0]))
-df.to_csv(save_dir+'data/{}.csv'.format(os.path.basename(FLAGS.input_delta).split('.')[0]))
+df.to_csv(save_dir+'{}.csv'.format(os.path.basename(FLAGS.input_delta).split('.')[0]))
 
 ''' # Prepare the DataPrepper
 dp = DeltaPrepper()
