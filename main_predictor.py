@@ -10,6 +10,7 @@ import Bio
 import os
 import re
 from batch_factory.deepfold_batch_factory import BatchFactory
+import pickle
 
 # Set flags
 flags = tf.app.flags
@@ -91,7 +92,13 @@ def get_aa_probs(pdb_id, wildtype, mutation, position):
         # Return inferred logits
         return logits
 
-def predict_ddg(input_dir_features, pdb_id, mutations):
+def unfolded_prob(data_set_name: str, residue: str):
+    load_data = lambda x: pickle.load(open(x, "rb"))
+    d = load_data("data/frequencies/{}_freq.p".format(data_set_name))
+    frequencies = d['frequencies']
+    return frequencies[residue]
+
+def predict_ddg(input_dir_features, pdb_id, mutations, data_set_name):
     mutation_dataframe = []
 
     chain_id = None
@@ -153,11 +160,16 @@ def predict_ddg(input_dir_features, pdb_id, mutations):
                 print("Wildtype prob: {} and mutation prob: {}.".format(logits[wt_index], logits[mutant_index]))
                 mutation['w_prob'] = logits[wt_index]
                 mutation['m_prob'] = logits[mutant_index]
-                #print(pd.DataFrame(mutation).transpose())
+                print(mutation)
 
+                # Add unfolded chain mutations
+                mutation['m_u_prob'] = unfolded_prob(data_set_name, mutant)
+                mutation['w_u_prob'] = unfolded_prob(data_set_name, wt)
+                print(mutation)
             mutation_dataframe.append(pd.DataFrame(mutation).transpose())
 
-        except Exception:
+        except Exception as e:
+            print(e)
             continue
 
 
@@ -204,8 +216,10 @@ dp.load_data(FLAGS.input_delta)
 if not dp.dataframe.empty:
     # Create empty columns for computed probabilities
     sLength = len(dp.dataframe['mutation'])
-    dp.dataframe['w_prob'] = pd.Series(np.random.randn(sLength), index=dp.dataframe.index)
-    dp.dataframe['m_prob'] = pd.Series(np.random.randn(sLength), index=dp.dataframe.index)
+    dp.dataframe['w_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
+    dp.dataframe['m_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
+    dp.dataframe['w_u_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
+    dp.dataframe['m_u_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
 
 
 
@@ -216,7 +230,7 @@ for pdb in dp.dataframe['PDBFileID'].unique():
     mutations = dp.dataframe[dp.dataframe['PDBFileID'].str.contains(pdb) == True]
     print(pdb)
     try:
-        mutation_dataframe = predict_ddg(FLAGS.input_features, pdb_id=pdb, mutations=mutations)
+        mutation_dataframe = predict_ddg(FLAGS.input_features, pdb_id=pdb, mutations=mutations, data_set_name=os.path.basename(FLAGS.input_delta).split('.')[0])
         print(mutation_dataframe)
         complete_mutations_dataframe.append(pd.DataFrame(mutation_dataframe))
     except MissingResidueError as e:
