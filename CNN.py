@@ -68,7 +68,7 @@ class CNNModel(object):
 
         # config
         self.batch_size = 10
-        self.max_steps = 60000
+        self.max_steps = 700000
 
     def _weight_variable(self, name, shape, stddev=0.1):
         return tf.get_variable(name, shape, initializer=tf.truncated_normal_initializer(stddev=stddev, dtype=tf.float32))
@@ -204,8 +204,7 @@ class CNNModel(object):
             sess.run(tf.global_variables_initializer())
 
             # set variables
-            best_test_accuracy = 0.0
-
+            best_validation_accuracy = 0.0
             for step in range(self.max_steps):
                 batch, _ = batch_factory['train'].next(self.batch_size)
                 _, summary = sess.run([optimize_op, merged], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
@@ -222,10 +221,12 @@ class CNNModel(object):
                     print('step %d, validation accuracy %g' %(step, validation_accuracy))
                     validation_writer.add_summary(summary, step)
 
-                    # Save model if it has improved
-                    checkpoint_path = os.path.join('model', 'model.ckpt')
-                    saver.save(session, checkpoint_path)
-                    print("New model saved to path: ", checkpoint_path)
+                    if validation_accuracy > best_validation_accuracy:
+                        best_validation_accuracy = validation_accuracy
+                        # Save model if it has improved
+                        checkpoint_path = os.path.join('model', 'model.ckpt')
+                        saver.save(session, checkpoint_path)
+                        print("New model saved to path: ", checkpoint_path)
 
     def _probabilities(self, logits):
         with tf.name_scope('probabilities'):
@@ -264,7 +265,7 @@ def main(_):
         with tf.Graph().as_default():
             model = CNNModel()
             session = tf.Session()
-            model.batch_size = 10
+            model.batch_size = 70
             model.train(session)
             print(graph.get_shape)
 

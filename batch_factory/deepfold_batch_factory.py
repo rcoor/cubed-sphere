@@ -54,7 +54,7 @@ class ProteinData:
         if "chain_boundary_indices" in protein_loader.keys():
             chain_boundaries = self.features["chain_boundary_indices"]
             #print chain_boundaries
-            ''' chain_ids = self.features["chain_ids"]
+            chain_ids = self.features["chain_ids"]
             chain_values = []
             for chain_index, boundary in enumerate(chain_boundaries[1:]):
 
@@ -62,8 +62,9 @@ class ProteinData:
                 if chain_index > 0:
                     length -= chain_boundaries[1:][chain_index-1]
                 chain_values += [chain_ids[chain_index]]*length
-            self.features["chain_ids"] = np.array(chain_values, dtype='a5') '''
-            self.features["chain_ids"] = np.array([i for i in range(chain_boundaries[1:][0])])
+            self.features["chain_ids"] = np.array(chain_values, dtype='a5')
+
+            ''' self.features["chain_ids"] = np.array([i for i in range(chain_boundaries[1:][0])]) '''
             #print self.features["chain_ids"]
 
         if len(selected_feature_keys) > 0:

@@ -51,9 +51,9 @@ def prepare_batch(input_dir_features, pdb_id):
                                [protein_feature_filename],
                                key_filter=["aa_one_hot"])
 
-    ''' batch_factory.add_data_set("chain_ids",
+    batch_factory.add_data_set("chain_ids",
                                [protein_feature_filename],
-                               key_filter=["chain_ids"]) '''
+                               key_filter=["chain_ids"])
 
     return batch_factory
 
@@ -111,6 +111,10 @@ def predict_ddg(input_dir_features, pdb_id, mutations, data_set_name):
 
     print(batch_factory.data_size())
     batch, _ = batch_factory.next(batch_factory.data_size())
+
+    chain_ids = batch['chain_ids']
+
+    print("Chain_id: {}".format(chain_ids))
 
     # Extract index of first residue from PDB - and attempt to use this as
     # offset into model
@@ -215,6 +219,7 @@ dp.load_data(FLAGS.input_delta)
 
 if not dp.dataframe.empty:
     # Create empty columns for computed probabilities
+    dp.dataframe = dp.dataframe[7:-1]
     sLength = len(dp.dataframe['mutation'])
     dp.dataframe['w_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
     dp.dataframe['m_prob'] = pd.Series(np.zeros(sLength), index=dp.dataframe.index)
