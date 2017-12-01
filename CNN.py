@@ -37,6 +37,7 @@ flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
 flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
 flags.DEFINE_boolean("train", False, "Define if this is a training session")
 flags.DEFINE_boolean("infer", False, "Define if this is a infering session")
+flags.DEFINE_boolean("batch_size", 10, "batch size to train on")
 
 FLAGS = flags.FLAGS
 
@@ -265,7 +266,7 @@ def main(_):
         with tf.Graph().as_default():
             model = CNNModel()
             session = tf.Session()
-            model.batch_size = 70
+            model.batch_size = FLAGS.batch_size
             model.train(session)
             print(graph.get_shape)
 
