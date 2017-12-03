@@ -26,7 +26,7 @@ from Bio.PDB import PDBParser, MMCIFParser, Polypeptide
 from Bio.PDB.Polypeptide import PPBuilder
 from Bio.PDB import PDBList
 
-FLAGS = None
+FLAGS = Nonet
 
 # Set flags
 flags = tf.app.flags
@@ -345,7 +345,7 @@ class CNNModel(object):
                         best_validation_accuracy = validation_accuracy
                         # Save model if it has improved
                         checkpoint_path = os.path.join('model', 'model.ckpt')
-                        saver.save(session, checkpoint_path)
+                        saver.save(session, checkpoint_path, global_step=step)
                         print("New model saved to path: ", checkpoint_path)
 
     def _probabilities(self, logits):
