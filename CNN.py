@@ -108,7 +108,7 @@ class CNNModel(object):
                     stride_xi=2,
                     stride_eta=2):
         with tf.variable_scope(name) as scope:
-            W = self._weight_variable("weights", [ksize_r, ksize_xi, ksize_eta, channels_in, channels_out])
+            W = self._weight_variable("weights", [channels_in, channels_out])
             b = tf.get_variable(
                 "b", shape=[channels_out], initializer=self.bias_initializer, dtype=tf.float32)
             convolution = conv_spherical_cubed_sphere(
