@@ -26,7 +26,7 @@ from Bio.PDB import PDBParser, MMCIFParser, Polypeptide
 from Bio.PDB.Polypeptide import PPBuilder
 from Bio.PDB import PDBList
 
-FLAGS = Nonet
+FLAGS = None
 
 # Set flags
 flags = tf.app.flags
