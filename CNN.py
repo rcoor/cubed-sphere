@@ -40,6 +40,7 @@ flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
 flags.DEFINE_boolean("train", False, "Define if this is a training session")
 flags.DEFINE_boolean("infer", False, "Define if this is a infering session")
 flags.DEFINE_boolean("batch_size", 10, "batch size to train on")
+flags.DEFINE_string("model", None, "Path to specific model, otherwise None.")
 
 FLAGS = flags.FLAGS
 
@@ -215,12 +216,14 @@ class CNNModel(object):
 
         fc1 = self._fc_layer(
             flattened, self._reduce_dim(pool4), 2048, name="fc1")
-        drop_out = tf.nn.dropout(fc1, self.keep_prob)
-        fc2 = self._fc_layer(drop_out, 2048, 2048, name="fc2")
+        drop_out1 = tf.nn.dropout(fc1, self.keep_prob)
 
-        out = self._out_layer(fc2, 2048, self.n_classes)
+        fc2 = self._fc_layer(drop_out1, 2048, 2048, name="fc2")
+        drop_out2 = tf.nn.dropout(fc2, self.keep_prob)
+
+        out = self._out_layer(drop_out2, 2048, self.n_classes)
         print(out)
-        return out
+        return tf.nn.softmax(out)
 
     def _batch_factory(self):
         # get proteins feature file names and grid feature file names
@@ -352,13 +355,13 @@ class CNNModel(object):
         with tf.name_scope('probabilities'):
             return tf.nn.softmax(logits=logits)
 
-    def predict(self, session, data):
+    def predict(self, session, data, model=None):
 
         logits = self._build_graph()
 
         # Load model
         saver = tf.train.Saver()
-        ckpt = tf.train.get_checkpoint_state('model/')
+        ckpt = tf.train.get_checkpoint_state('model/', latest_filename=model)
         saver.restore(session, ckpt.model_checkpoint_path)
 
         logit_array = []
