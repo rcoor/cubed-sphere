@@ -222,8 +222,7 @@ class CNNModel(object):
         drop_out2 = tf.nn.dropout(fc2, self.keep_prob)
 
         out = self._out_layer(drop_out2, 2048, self.n_classes)
-        print(out)
-        return tf.nn.softmax(out)
+        return out
 
     def _batch_factory(self):
         # get proteins feature file names and grid feature file names
