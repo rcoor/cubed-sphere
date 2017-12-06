@@ -1,5 +1,4 @@
 
-from batch_factory.deepfold_batch_factory import BatchFactory
 
 import argparse
 import sys
