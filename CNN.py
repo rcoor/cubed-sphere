@@ -39,7 +39,7 @@ flags.DEFINE_integer("validation_set_size", 10, "Size of validation set")
 flags.DEFINE_string("logdir", "tmp/summary/", "Path to summary files")
 flags.DEFINE_boolean("train", False, "Define if this is a training session")
 flags.DEFINE_boolean("infer", False, "Define if this is a infering session")
-flags.DEFINE_boolean("batch_size", 10, "batch size to train on")
+flags.DEFINE_integer("batch_size", 10, "batch size to train on")
 flags.DEFINE_string("model", None, "Path to specific model, otherwise None.")
 
 FLAGS = flags.FLAGS
@@ -60,23 +60,31 @@ class CNNModel(object):
     dropout.
     """
 
-    def __init__(self):
+    def __init__(self,  checkpoint_path='model/', step=None, reg_fact=0.001, *args, **kwargs):
+        # tf.reset_default_graph()
         # internal setting
-        self.optimizer = tf.train.AdamOptimizer(
-            0.001, beta1=0.9, beta2=0.999, epsilon=1e-08)
         self.bias_initializer = tf.constant_initializer(0.0)
         self.shape = [-1, 6, 24, 38, 38, 2]
         self.n_classes = 21
 
-        # placeholders
-        self.labels = tf.placeholder(tf.float32, shape=[None, self.n_classes])
-        self.x = tf.placeholder(tf.float32, shape=[None, 6, 24, 38, 38, 2])
-        self.keep_prob = tf.placeholder_with_default(
-            tf.constant(1.0), shape=None)
-
         # config
         self.batch_size = 10
-        self.max_steps = 700000
+        self.max_epochs = 700000
+
+        # build model
+        self.logits = self._build_graph(*args, **kwargs)
+
+        self.entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.logits, labels=self.labels)
+        self.optimizer = tf.train.AdamOptimizer(0.001, beta1=0.9, beta2=0.999, epsilon=1e-08)
+        self.regularization = tf.add_n([tf.nn.l2_loss(v) for v in tf.trainable_variables() if not v.name.startswith("b")]) * reg_fact
+        self.loss = tf.reduce_mean(self.entropy) + self.regularization
+        self.train_step = self.optimizer.minimize(self.loss)
+
+        self.session = tf.Session()
+        # self.saver = tf.train.Saver()
+        ### Initialize variables ###
+        tf.global_variables_initializer().run(session=self.session)
+        print("Variables initialized")
 
     def _weight_variable(self, name, shape, stddev=0.1):
         return tf.get_variable(name, shape, initializer=tf.truncated_normal_initializer(stddev=stddev, dtype=tf.float32))
@@ -132,8 +140,13 @@ class CNNModel(object):
 
     def _build_graph(self):
         # Reshape to use within a convolutional neural net.
-        x = tf.reshape(self.x, shape=[-1, 6, 24, 38, 38, 2])
 
+        # placeholders
+        self.labels = tf.placeholder(tf.float32, shape=[None, self.n_classes])
+        self.x = tf.placeholder(tf.float32, shape=[None, 6, 24, 38, 38, 2])
+        self.keep_prob = tf.placeholder_with_default(tf.constant(1.0), shape=None)
+
+        x = tf.reshape(self.x, shape=[-1, 6, 24, 38, 38, 2])
         ### LAYER 1 ###
         conv1 = self._conv_layer(x,
                                  ksize_r=3,
@@ -280,32 +293,18 @@ class CNNModel(object):
 
         return {'train': train_batch_factory, 'validation': validation_batch_factory, 'test': test_batch_factory}
 
-    def _loss(self, logits, labels):
-        with tf.name_scope('loss'):
-            cross_entropy = tf.nn.softmax_cross_entropy_with_logits(
-                labels=labels, logits=logits)
-            return tf.reduce_mean(cross_entropy)
 
-    def _accuracy(self, logits, labels):
-        with tf.name_scope('accuracy'):
-            correct_prediction = tf.equal(
-                tf.argmax(logits, 1), tf.argmax(self.labels, 1))
-            correct_prediction = tf.cast(correct_prediction, tf.float32)
-            return tf.reduce_mean(correct_prediction)
-
-    def train(self, session):
+    def train(self):
         # Labels is a placeholder
-        logits = self._build_graph()
-        loss_op = self._loss(logits, self.labels)
-        optimize_op = self.optimizer.minimize(loss_op)
-        saver = tf.train.Saver(tf.global_variables())
+        ''' loss_op = self._loss(logits, self.labels)
+        optimize_op = self.optimizer.minimize(loss_op) '''
+
         batch_factory = self._batch_factory()
 
-        accuracy = self._accuracy(logits, self.labels)
 
-        ### DEFINE SUMMARIES ###
-        tf.summary.scalar("accuracy", accuracy)
-        tf.summary.scalar("cross_entropy", loss_op)
+        ## DEFINE SUMMARIES ###
+        tf.summary.scalar("loss", self.loss)
+        tf.summary.scalar("cross_entropy", self.entropy)
         merged = tf.summary.merge_all()
 
         time_str = datetime.datetime.now().isoformat()
@@ -318,79 +317,97 @@ class CNNModel(object):
             "./tmp/summary/test/{}".format(datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')))
 
         ### TRAIN MODEL ###
-        with session as sess:
-            sess.run(tf.global_variables_initializer())
+        with self.session.as_default():
+            #self.logits = self._build_graph()
+            iteration = 0
 
             # set variables
             best_validation_accuracy = 0.0
-            for step in range(self.max_steps):
-                batch, _ = batch_factory['train'].next(self.batch_size)
-                _, summary = sess.run([optimize_op, merged], feed_dict={self.x: batch[
-                                      "data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
-                if step % 100 == 0:
-                    # Train accuracy
-                    summary, train_accuracy = sess.run([merged, accuracy], feed_dict={self.x: batch[
-                                                       "data"], self.labels: batch["model_output"], self.keep_prob: 1.0})
-                    print('step %d, training accuracy %g' %
-                          (step, train_accuracy))
-                    train_writer.add_summary(summary, step)
+            for epoch in range(self.max_epochs):
 
-                    # Validation accuracy
-                    batch, _ = batch_factory['validation'].next(10)
-                    summary, validation_accuracy = sess.run([merged, accuracy],
-                                                            feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 1.0})
-                    print('step %d, validation accuracy %g' %
-                          (step, validation_accuracy))
-                    validation_writer.add_summary(summary, step)
+                more_data = True
+                while more_data:
 
-                    if validation_accuracy > best_validation_accuracy:
-                        best_validation_accuracy = validation_accuracy
-                        # Save model if it has improved
-                        checkpoint_path = os.path.join('model', 'model.ckpt')
-                        saver.save(session, checkpoint_path, global_step=step)
-                        print("New model saved to path: ", checkpoint_path)
+                    more_data = (batch_factory['train'].feature_index != 0)
 
-    def _probabilities(self, logits):
-        with tf.name_scope('probabilities'):
-            return tf.nn.softmax(logits=logits)
+                    batch, _ = batch_factory['train'].next(self.batch_size)
 
-    def predict(self, session, data, model=None):
+                    feed_dict = dict({self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
 
-        logits = self._build_graph()
+                    _, loss_value, summary = self.session.run([self.train_step, self.loss, merged], feed_dict={self.x: batch["data"], self.labels: batch["model_output"], self.keep_prob: 0.5})
 
-        # Load model
-        saver = tf.train.Saver()
-        ckpt = tf.train.get_checkpoint_state('model/', latest_filename=model)
-        saver.restore(session, ckpt.model_checkpoint_path)
+                    if iteration % 100 == 0:
 
-        logit_array = []
+                        Q_training_batch, loss = self.Q_accuracy_and_loss(batch)
+                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration, epoch, loss, Q_training_batch))
+                        train_writer.add_summary(summary, iteration)
 
-        ''' with session as sess:
-            print(batch_factory.data_size())
-            for i in range(batch_factory.data_size()):
-                batch, _ = batch_factory.next(1)
-                predicted_logits = sess.run([self._probabilities(logits)], feed_dict={self.x: batch["data"]})
-                print(predicted_logits)
-                logit_array.append(predicted_logits)
-        # TODO: Here I need to have a tensor of size: (protein_size, patches, radius, xi, eta, channels) - can this work?
-        print(predicted_logits) '''
-        with session as sess:
-            predicted_logits = sess.run(
-                [self._probabilities(logits)], feed_dict={self.x: data})
+                        # Validation accuracy
+                        validation_batch, _ = batch_factory['validation'].next(batch_factory['validation'].data_size())
 
-        return predicted_logits
+                        Q_validation_batch, loss = self.Q_accuracy_and_loss(validation_batch)
+                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration, epoch, loss, Q_validation_batch))
+                        validation_writer.add_summary(summary, iteration)
+
+                        if Q_validation_batch > best_validation_accuracy:
+                            best_validation_accuracy = Q_validation_batch
+                            # Save model if it has improved
+                            checkpoint_path = os.path.join('model', 'model.ckpt')
+                            saver.save(self.session, checkpoint_path, global_step=step)
+                            print("New model saved to path: ", checkpoint_path)
+
+                        iteration += 1
+
+    def _accuracy(self, logits, labels):
+        with tf.name_scope('accuracy'):
+            correct_prediction = tf.equal(
+                tf.argmax(logits, 1), tf.argmax(self.labels, 1))
+            correct_prediction = tf.cast(correct_prediction, tf.float32)
+            return tf.reduce_mean(correct_prediction)
+
+    def Q_accuracy_and_loss(self, batch):
+        y = batch["model_output"]
+        y_argmax = np.argmax(y, 1)
+        results = self.infer(y)
+
+        y_, entropies = map(np.concatenate, zip(*results))
+
+        predictions = np.argmax(y_, 1)
+        identical = (predictions == y_argmax)
+
+        Q_accuracy = np.mean(identical)
+
+        regularization = self.session.run(self.regularization, feed_dict={})
+        loss = np.mean(entropies) + regularization
+
+        return Q_accuracy, loss
+
+    def infer(self, data):
+        return self.session.run([tf.nn.softmax(self.logits), self.entropy], feed_dict={self.x: data, self.keep_prob: 1.0})
+
+    def restore(self, checkpoint_path, step=None):
+        ckpt = tf.train.get_checkpoint_state(checkpoint_path)
+
+        if ckpt and ckpt.model_checkpoint_path:
+            if step is None or step == -1:
+                print("Restoring from: last checkpoint")
+                self.saver.restore(self.session, tf.train.latest_checkpoint(checkpoint_path))
+            else:
+                checkpoint_file = checkpoint_path+("/model.ckpt-%d" % step)
+                print("Restoring from:", checkpoint_file)
+                self.saver.restore(self.session, checkpoint_file)
+        else:
+            print("Could not load file")
+
 
 
 def main(_):
     print("hej")
-    tf.reset_default_graph()
     if FLAGS.train:
-        with tf.Graph().as_default():
-            model = CNNModel()
-            session = tf.Session()
-            model.batch_size = FLAGS.batch_size
-            model.train(session)
-            print(graph.get_shape)
+        model = CNNModel()
+        model.batch_size = FLAGS.batch_size
+        model.train()
+        # print(graph.get_shape)
 
     if FLAGS.infer:
         with tf.Graph().as_default():
