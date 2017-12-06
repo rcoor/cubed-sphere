@@ -317,7 +317,6 @@ class CNNModel(object):
 
         ### TRAIN MODEL ###
         with self.session.as_default():
-            #self.logits = self._build_graph()
             iteration = 0
 
             # set variables
@@ -338,14 +337,14 @@ class CNNModel(object):
                     if iteration % 100 == 0:
 
                         Q_training_batch, loss = self.Q_accuracy_and_loss(batch)
-                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration, epoch, loss, Q_training_batch))
+                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration +1, epoch +1, loss, Q_training_batch))
                         train_writer.add_summary(summary, iteration)
 
                         # Validation accuracy
                         validation_batch, _ = batch_factory['validation'].next(batch_factory['validation'].data_size())
 
                         Q_validation_batch, loss = self.Q_accuracy_and_loss(validation_batch)
-                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration, epoch, loss, Q_validation_batch))
+                        print('step %d, of epoch %d, training loss %g, accuracy %g' %(iteration +1, epoch +1, loss, Q_validation_batch))
                         validation_writer.add_summary(summary, iteration)
 
                         if Q_validation_batch > best_validation_accuracy:
@@ -367,9 +366,9 @@ class CNNModel(object):
     def Q_accuracy_and_loss(self, batch):
         y = batch["model_output"]
         y_argmax = np.argmax(y, 1)
-        results = self.infer(batch)
+        results = self._infer(batch)
 
-        y_, entropies = map(np.concatenate, zip(*results))
+        y_, entropies = results
 
         predictions = np.argmax(y_, 1)
         identical = (predictions == y_argmax)
@@ -381,9 +380,9 @@ class CNNModel(object):
 
         return Q_accuracy, loss
 
-    def infer(self, batch):
+    def _infer(self, batch):
         grid_matrix = batch["data"]
-        return self.session.run([tf.nn.softmax(self.logits), self.entropy], feed_dict={self.x: grid_matrix, self.keep_prob: 1.0})
+        return self.session.run([tf.nn.softmax(self.logits), self.entropy], feed_dict={self.x: grid_matrix, self.labels: batch["model_output"], self.keep_prob: 1.0})
 
     def restore(self, checkpoint_path, step=None):
         ckpt = tf.train.get_checkpoint_state(checkpoint_path)
