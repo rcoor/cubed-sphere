@@ -303,7 +303,7 @@ class CNNModel(object):
 
         ## DEFINE SUMMARIES ###
         tf.summary.scalar("loss", self.loss)
-        tf.summary.scalar("cross_entropy", self.entropy)
+        #tf.summary.scalar("cross_entropy", self.entropy)
         merged = tf.summary.merge_all()
 
         time_str = datetime.datetime.now().isoformat()
