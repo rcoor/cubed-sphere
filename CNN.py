@@ -367,7 +367,7 @@ class CNNModel(object):
     def Q_accuracy_and_loss(self, batch):
         y = batch["model_output"]
         y_argmax = np.argmax(y, 1)
-        results = self.infer(y)
+        results = self.infer(batch)
 
         y_, entropies = map(np.concatenate, zip(*results))
 
@@ -381,8 +381,9 @@ class CNNModel(object):
 
         return Q_accuracy, loss
 
-    def infer(self, data):
-        return self.session.run([tf.nn.softmax(self.logits), self.entropy], feed_dict={self.x: data, self.keep_prob: 1.0})
+    def infer(self, batch):
+        grid_matrix = batch["data"]
+        return self.session.run([tf.nn.softmax(self.logits), self.entropy], feed_dict={self.x: grid_matrix, self.keep_prob: 1.0})
 
     def restore(self, checkpoint_path, step=None):
         ckpt = tf.train.get_checkpoint_state(checkpoint_path)
